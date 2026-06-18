@@ -1067,14 +1067,73 @@
       }
       @media (max-width: 640px) {
         .nav-links {
-          display: none;
+          position: fixed;
+          top: 64px;
+          left: 0;
+          right: 0;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 0;
+          padding: 1rem 5vw 1.25rem;
+          background: rgba(26, 26, 26, 0.98);
+          border-bottom: 1px solid var(--border);
+          transform: translateY(-120%);
+          opacity: 0;
+          pointer-events: none;
+          transition:
+            transform 0.25s ease,
+            opacity 0.25s ease;
         }
+
+        .nav-links.open {
+          transform: translateY(0);
+          opacity: 1;
+          pointer-events: auto;
+        }
+
+        .nav-links li {
+          width: 100%;
+        }
+
+        .nav-links a {
+          display: block;
+          width: 100%;
+          padding: 0.9rem 0;
+          font-size: 1rem;
+        }
+
+        .nav-cta {
+          margin-top: 0.5rem;
+          text-align: center;
+        }
+
         .hamburger {
           display: flex;
         }
+
+        .hamburger.open span:nth-child(1) {
+          transform: translateY(7px) rotate(45deg);
+        }
+
+        .hamburger.open span:nth-child(2) {
+          opacity: 0;
+        }
+
+        .hamburger.open span:nth-child(3) {
+          transform: translateY(-7px) rotate(-45deg);
+        }
+
+        .hamburger span {
+          transition:
+            transform 0.25s ease,
+            opacity 0.25s ease;
+        }
+
         h1 {
           font-size: 2.4rem;
         }
+
         .diagnosis-block {
           padding: 1.75rem;
         }
@@ -1669,6 +1728,22 @@
       </div>
     </footer>
 
+    <script>
+      const hamburger = document.querySelector(".hamburger");
+      const navLinks = document.querySelector(".nav-links");
+
+      hamburger.addEventListener("click", () => {
+        hamburger.classList.toggle("open");
+        navLinks.classList.toggle("open");
+      });
+
+      navLinks.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+          hamburger.classList.remove("open");
+          navLinks.classList.remove("open");
+        });
+      });
+    </script>
     <script>
       // FAQ accordion
       document.querySelectorAll(".faq-q").forEach((q) => {
