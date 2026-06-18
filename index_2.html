@@ -1,0 +1,1689 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Riselab Studio — AI-Powered Growth</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,700;9..40,800&family=DM+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      :root {
+        --orange: #c45b1a;
+        --orange-light: #d96e2a;
+        --orange-dim: rgba(196, 91, 26, 0.12);
+        --black: #1a1a1a;
+        --black-deep: #111111;
+        --off-white: #f5f5f2;
+        --mid: #2c2c2a;
+        --text-muted: #888884;
+        --border: rgba(255, 255, 255, 0.08);
+        --border-light: rgba(26, 26, 26, 0.1);
+        --mono: "DM Mono", monospace;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "DM Sans", sans-serif;
+        background: var(--black);
+        color: var(--off-white);
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        height: 72px;
+        padding: 0 5vw;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: rgba(26, 26, 26, 0.92);
+        backdrop-filter: blur(14px);
+        border-bottom: 1px solid var(--border);
+      }
+
+      .nav-logo {
+        font-size: 1.1rem;
+        font-weight: 800;
+        letter-spacing: -0.03em;
+        color: var(--off-white);
+        text-decoration: none;
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+        list-style: none;
+      }
+
+      .nav-links a {
+        color: var(--text-muted);
+        text-decoration: none;
+        font-size: 0.875rem;
+        transition: color 0.2s ease;
+      }
+
+      .nav-links a:hover {
+        color: var(--off-white);
+      }
+
+      .nav-cta {
+        background: var(--orange);
+        color: #fff !important;
+        padding: 0.6rem 1.25rem;
+        border-radius: 8px;
+        font-weight: 600;
+      }
+
+      .nav-cta:hover {
+        background: var(--orange-light);
+      }
+
+      .hamburger {
+        display: none;
+        flex-direction: column;
+        gap: 5px;
+        border: 0;
+        background: transparent;
+      }
+
+      .hamburger span {
+        width: 22px;
+        height: 2px;
+        background: var(--off-white);
+      }
+
+      /* HERO */
+      #hero {
+        min-height: 100vh;
+        padding: 130px 5vw 90px;
+        display: grid;
+        grid-template-columns: 1.05fr 0.95fr;
+        gap: 4rem;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero-grid-bg {
+        position: absolute;
+        inset: 0;
+        background-image:
+          linear-gradient(rgba(196, 91, 26, 0.04) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(196, 91, 26, 0.04) 1px, transparent 1px);
+        background-size: 60px 60px;
+      }
+
+      .hero-glow {
+        position: absolute;
+        width: 650px;
+        height: 650px;
+        right: -150px;
+        top: 5%;
+        background: radial-gradient(
+          circle,
+          rgba(196, 91, 26, 0.16),
+          transparent 70%
+        );
+      }
+
+      .hero-content,
+      .hero-canvas-wrap {
+        position: relative;
+        z-index: 2;
+      }
+
+      .availability-row {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        flex-wrap: wrap;
+        margin-bottom: 2rem;
+      }
+
+      .availability-banner {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-family: var(--mono);
+        font-size: 0.72rem;
+        color: var(--text-muted);
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+      }
+
+      .availability-banner::before {
+        content: "";
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #4ade80;
+        box-shadow: 0 0 8px rgba(74, 222, 128, 0.7);
+      }
+
+      .status-pill {
+        display: inline-flex;
+        padding: 0.35rem 0.85rem;
+        border-radius: 999px;
+        background: var(--orange-dim);
+        color: var(--orange-light);
+        border: 1px solid rgba(196, 91, 26, 0.3);
+        font-size: 0.78rem;
+      }
+
+      h1 {
+        font-size: clamp(3rem, 6vw, 5.6rem);
+        line-height: 1.03;
+        letter-spacing: -0.055em;
+        font-weight: 800;
+        margin-bottom: 1.5rem;
+      }
+
+      h1 .accent {
+        color: var(--orange);
+      }
+
+      .subheadline {
+        max-width: 580px;
+        color: #aaa;
+        font-size: 1.08rem;
+        line-height: 1.75;
+        margin-bottom: 2.4rem;
+      }
+
+      .hero-ctas {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+        margin-bottom: 2rem;
+      }
+
+      .btn-primary,
+      .btn-secondary,
+      .btn-dark {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        padding: 0.9rem 1.7rem;
+        border-radius: 10px;
+        font-weight: 700;
+        font-size: 0.95rem;
+        text-decoration: none;
+        transition:
+          transform 0.2s ease,
+          background 0.2s ease,
+          border-color 0.2s ease;
+      }
+
+      .btn-primary {
+        background: var(--orange);
+        color: #fff;
+      }
+
+      .btn-primary:hover {
+        background: var(--orange-light);
+        transform: translateY(-2px);
+      }
+
+      .btn-secondary {
+        color: var(--off-white);
+        border: 1px solid var(--border);
+      }
+
+      .btn-secondary:hover {
+        border-color: rgba(255, 255, 255, 0.25);
+        transform: translateY(-2px);
+      }
+
+      .trust-line {
+        color: var(--text-muted);
+        font-family: var(--mono);
+        font-size: 0.78rem;
+      }
+
+      /* NEW HERO CANVAS */
+      .hero-canvas {
+        width: min(100%, 540px);
+        padding: 2rem;
+        border-radius: 24px;
+        background: rgba(255, 255, 255, 0.035);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(18px);
+        box-shadow: 0 30px 80px rgba(0, 0, 0, 0.25);
+        animation: float 6s ease-in-out infinite;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-14px);
+        }
+      }
+
+      .canvas-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 2rem;
+      }
+
+      .canvas-title {
+        font-family: var(--mono);
+        font-size: 0.72rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--text-muted);
+      }
+
+      .canvas-status {
+        font-size: 0.72rem;
+        color: var(--orange-light);
+        background: var(--orange-dim);
+        border: 1px solid rgba(196, 91, 26, 0.25);
+        border-radius: 999px;
+        padding: 0.25rem 0.7rem;
+      }
+
+      .canvas-section {
+        padding: 1.1rem 0;
+        border-top: 1px solid var(--border);
+      }
+
+      .canvas-section:first-of-type {
+        border-top: 0;
+        padding-top: 0;
+      }
+
+      .canvas-label {
+        font-family: var(--mono);
+        font-size: 0.68rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--text-muted);
+        margin-bottom: 0.85rem;
+      }
+
+      .canvas-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.35rem 0;
+        color: #d8d8d2;
+        font-size: 0.9rem;
+      }
+
+      .canvas-row strong {
+        color: #fff;
+        font-size: 1rem;
+      }
+
+      .canvas-metrics {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.8rem;
+      }
+
+      .metric-box {
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 1rem;
+      }
+
+      .metric-value {
+        font-size: 1.6rem;
+        font-weight: 800;
+        color: var(--orange);
+        letter-spacing: -0.04em;
+      }
+
+      .metric-label {
+        color: var(--text-muted);
+        font-size: 0.72rem;
+        margin-top: 0.15rem;
+      }
+
+      /* COMMON */
+      section {
+        padding: 110px 5vw;
+      }
+
+      .section-eyebrow {
+        color: var(--orange);
+        font-family: var(--mono);
+        font-size: 0.72rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        margin-bottom: 1rem;
+      }
+
+      h2 {
+        font-size: clamp(2.1rem, 4vw, 3.6rem);
+        line-height: 1.1;
+        letter-spacing: -0.035em;
+        margin-bottom: 1.2rem;
+      }
+
+      h2 em {
+        font-style: normal;
+        color: var(--orange);
+      }
+
+      /* PROBLEM */
+      #problem {
+        background: var(--off-white);
+        color: var(--black);
+      }
+
+      .problem-intro {
+        max-width: 680px;
+        color: #555;
+        font-size: 1.05rem;
+        margin-bottom: 3rem;
+      }
+
+      .pain-cards {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+        margin-bottom: 3rem;
+      }
+
+      .pain-card {
+        background: #fff;
+        border: 1px solid var(--border-light);
+        border-radius: 18px;
+        padding: 2rem;
+        border-left: 4px solid transparent;
+        transition: 0.2s;
+      }
+
+      .pain-card:hover {
+        transform: translateY(-6px);
+        border-left-color: var(--orange);
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+      }
+
+      .pain-card h3 {
+        margin-bottom: 0.75rem;
+        font-size: 1.2rem;
+      }
+
+      .pain-card p {
+        color: #666;
+        font-size: 0.93rem;
+      }
+
+      .diagnosis-block {
+        background: var(--black);
+        color: var(--off-white);
+        border-radius: 18px;
+        padding: 2.5rem;
+        margin-bottom: 2rem;
+      }
+
+      .diagnosis-block h3 {
+        font-family: var(--mono);
+        color: var(--text-muted);
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        margin-bottom: 1.3rem;
+      }
+
+      .diagnosis-block ul {
+        list-style: none;
+      }
+
+      .diagnosis-block li {
+        margin-bottom: 0.75rem;
+        color: #ccc;
+      }
+
+      .diagnosis-block li::before {
+        content: "↗";
+        color: var(--orange);
+        margin-right: 0.6rem;
+      }
+
+      .btn-dark {
+        background: var(--black);
+        color: var(--off-white);
+      }
+
+      /* SERVICES */
+      #services {
+        background: #fff;
+        color: var(--black);
+      }
+
+      .services-header {
+        max-width: 680px;
+        margin-bottom: 3rem;
+      }
+
+      .services-header p {
+        color: #666;
+      }
+
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.25rem;
+      }
+
+      .service-card {
+        background: #fff;
+        border: 1px solid var(--border-light);
+        border-radius: 18px;
+        padding: 2rem;
+        min-height: 300px;
+        display: flex;
+        flex-direction: column;
+        transition: 0.2s;
+      }
+
+      .service-card:hover {
+        transform: translateY(-5px);
+        border-left: 4px solid var(--orange);
+        box-shadow: 0 18px 45px rgba(0, 0, 0, 0.07);
+      }
+
+      .service-icon {
+        width: 42px;
+        height: 42px;
+        border-radius: 12px;
+        background: var(--orange-dim);
+        color: var(--orange);
+        display: grid;
+        place-items: center;
+        margin-bottom: 1.25rem;
+      }
+
+      .service-card h3 {
+        font-size: 1.05rem;
+        margin-bottom: 0.75rem;
+      }
+
+      .service-card p {
+        color: #666;
+        font-size: 0.9rem;
+        flex: 1;
+      }
+
+      .service-link {
+        margin-top: 1.2rem;
+        color: var(--orange);
+        font-family: var(--mono);
+        font-size: 0.78rem;
+        text-decoration: none;
+      }
+
+      .service-card.specialized {
+        background: var(--black);
+        color: var(--off-white);
+        border-color: rgba(255, 255, 255, 0.08);
+      }
+
+      .specialized-badge {
+        align-self: flex-start;
+        background: var(--orange);
+        color: #fff;
+        padding: 0.3rem 0.65rem;
+        border-radius: 999px;
+        font-family: var(--mono);
+        font-size: 0.62rem;
+        letter-spacing: 0.08em;
+        margin-bottom: 1.3rem;
+      }
+
+      /* PACKAGES REDESIGN */
+      #packages {
+        background: var(--off-white);
+        color: var(--black);
+      }
+
+      .package-intro {
+        max-width: 560px;
+      }
+
+      .packages-grid {
+        margin-top: 3.5rem;
+        display: grid;
+        grid-template-columns: 0.9fr 1.15fr 0.9fr;
+        gap: 1.5rem;
+        align-items: center;
+      }
+
+      .package-card {
+        background: #fff;
+        border: 1px solid var(--border-light);
+        border-radius: 22px;
+        padding: 2rem;
+        min-height: 560px;
+        display: flex;
+        flex-direction: column;
+        transition: 0.2s;
+      }
+
+      .package-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 25px 70px rgba(0, 0, 0, 0.1);
+      }
+
+      .package-card.featured {
+        min-height: 640px;
+        background: var(--black);
+        color: var(--off-white);
+        border: 1px solid var(--orange);
+        box-shadow: 0 30px 80px rgba(196, 91, 26, 0.18);
+      }
+
+      .package-top {
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+        margin-bottom: 1rem;
+      }
+
+      .package-label {
+        font-family: var(--mono);
+        color: var(--orange);
+        font-size: 0.72rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+
+      .recommended {
+        background: var(--orange-dim);
+        border: 1px solid rgba(196, 91, 26, 0.3);
+        color: var(--orange-light);
+        border-radius: 999px;
+        padding: 0.25rem 0.65rem;
+        font-size: 0.68rem;
+        white-space: nowrap;
+      }
+
+      .package-card h3 {
+        font-size: 1.5rem;
+        line-height: 1.2;
+        margin-bottom: 0.7rem;
+      }
+
+      .package-desc {
+        color: #666;
+        font-size: 0.92rem;
+        margin-bottom: 1.8rem;
+      }
+
+      .package-card.featured .package-desc {
+        color: #aaa;
+      }
+
+      .price-label {
+        font-size: 0.75rem;
+        color: var(--text-muted);
+        font-family: var(--mono);
+        margin-bottom: 0.4rem;
+      }
+
+      .price {
+        font-size: clamp(2.2rem, 4vw, 3.2rem);
+        font-weight: 800;
+        letter-spacing: -0.06em;
+        margin-bottom: 1.6rem;
+      }
+
+      .price span {
+        font-size: 0.95rem;
+        color: var(--text-muted);
+      }
+
+      .pkg-items {
+        list-style: none;
+        margin-bottom: 2rem;
+        flex: 1;
+      }
+
+      .pkg-items li {
+        margin-bottom: 0.75rem;
+        color: #555;
+        font-size: 0.9rem;
+      }
+
+      .package-card.featured .pkg-items li {
+        color: #ddd;
+      }
+
+      .pkg-items li::before {
+        content: "✓";
+        color: var(--orange);
+        margin-right: 0.6rem;
+      }
+
+      .pkg-cta {
+        display: block;
+        text-align: center;
+        padding: 0.9rem;
+        border-radius: 10px;
+        text-decoration: none;
+        font-weight: 700;
+        background: var(--orange);
+        color: #fff;
+      }
+
+      .pkg-cta-outline {
+        background: transparent;
+        color: var(--black);
+        border: 1px solid var(--border-light);
+      }
+
+      /* WHY AI */
+      #why-ai {
+        background: var(--black);
+      }
+
+      .why-ai-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 5rem;
+        align-items: center;
+      }
+
+      .why-ai-desc {
+        color: var(--text-muted);
+        max-width: 520px;
+        margin-bottom: 2rem;
+      }
+
+      .ai-points {
+        display: grid;
+        gap: 1rem;
+      }
+
+      .ai-point {
+        display: flex;
+        gap: 1rem;
+      }
+
+      .ai-point-icon {
+        width: 38px;
+        height: 38px;
+        border-radius: 10px;
+        background: var(--orange-dim);
+        color: var(--orange);
+        display: grid;
+        place-items: center;
+        flex-shrink: 0;
+      }
+
+      .ai-point h4 {
+        font-size: 0.95rem;
+        margin-bottom: 0.25rem;
+      }
+
+      .ai-point p {
+        color: var(--text-muted);
+        font-size: 0.85rem;
+      }
+
+      .ai-visual {
+        background: var(--mid);
+        border: 1px solid var(--border);
+        border-radius: 22px;
+        padding: 2rem;
+      }
+
+      .ai-visual-label {
+        font-family: var(--mono);
+        color: var(--text-muted);
+        font-size: 0.72rem;
+        text-transform: uppercase;
+        margin-bottom: 1.4rem;
+      }
+
+      .ai-bar-row {
+        margin-bottom: 1rem;
+      }
+
+      .ai-bar-label {
+        display: flex;
+        justify-content: space-between;
+        color: #aaa;
+        font-size: 0.8rem;
+      }
+
+      .ai-bar-track {
+        height: 7px;
+        background: rgba(255, 255, 255, 0.06);
+        border-radius: 999px;
+        overflow: hidden;
+        margin-top: 0.35rem;
+      }
+
+      .ai-bar-fill {
+        height: 100%;
+        background: linear-gradient(90deg, var(--orange), var(--orange-light));
+      }
+
+      .ai-stat-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+      }
+
+      .ai-stat {
+        background: rgba(255, 255, 255, 0.04);
+        border-radius: 14px;
+        padding: 1rem;
+      }
+
+      .ai-stat-num {
+        color: var(--orange);
+        font-size: 2rem;
+        font-weight: 800;
+      }
+
+      /* RESULTS REDESIGN */
+      #results {
+        background: var(--off-white);
+        color: var(--black);
+        text-align: center;
+      }
+
+      .results-intro {
+        max-width: 640px;
+        margin: 0 auto 3rem;
+      }
+
+      .suba-card {
+        max-width: 720px;
+        margin: 0 auto;
+        background: #fff;
+        border: 1px solid var(--border-light);
+        border-radius: 26px;
+        padding: 3rem;
+        text-align: left;
+        box-shadow: 0 25px 70px rgba(0, 0, 0, 0.08);
+      }
+
+      .result-tags {
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+        margin-bottom: 1.4rem;
+      }
+
+      .tag {
+        background: var(--orange-dim);
+        color: var(--orange);
+        border: 1px solid rgba(196, 91, 26, 0.25);
+        border-radius: 999px;
+        font-family: var(--mono);
+        font-size: 0.68rem;
+        padding: 0.3rem 0.7rem;
+        text-transform: uppercase;
+      }
+
+      .suba-card h3 {
+        font-size: 2rem;
+        margin-bottom: 0.3rem;
+      }
+
+      .result-meta {
+        color: #777;
+        font-family: var(--mono);
+        font-size: 0.78rem;
+        margin-bottom: 2rem;
+      }
+
+      .case-grid {
+        display: grid;
+        gap: 1.2rem;
+      }
+
+      .case-row {
+        padding-top: 1.2rem;
+        border-top: 1px solid var(--border-light);
+      }
+
+      .case-row strong {
+        display: block;
+        color: var(--orange);
+        font-family: var(--mono);
+        font-size: 0.72rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        margin-bottom: 0.5rem;
+      }
+
+      .case-row p {
+        color: #555;
+      }
+
+      .case-outcome {
+        margin-top: 1.5rem;
+        background: var(--black);
+        color: var(--off-white);
+        border-radius: 18px;
+        padding: 1.4rem;
+      }
+
+      /* FAQ */
+      #faq {
+        background: var(--black);
+      }
+
+      .faq-list {
+        max-width: 760px;
+      }
+
+      .faq-item {
+        border-bottom: 1px solid var(--border);
+      }
+
+      .faq-q {
+        padding: 1.4rem 0;
+        display: flex;
+        justify-content: space-between;
+        cursor: pointer;
+      }
+
+      .faq-a {
+        max-height: 0;
+        overflow: hidden;
+        transition: 0.3s ease;
+      }
+
+      .faq-item.open .faq-a {
+        max-height: 200px;
+        padding-bottom: 1.3rem;
+      }
+
+      .faq-a p {
+        color: var(--text-muted);
+      }
+
+      /* CTA */
+      #cta {
+        background: var(--off-white);
+        color: var(--black);
+        text-align: center;
+      }
+
+      #cta p {
+        color: #666;
+        margin-bottom: 2rem;
+      }
+
+      /* FOOTER REDESIGN */
+      footer {
+        background: var(--black-deep);
+        border-top: 1px solid var(--border);
+        padding: 4rem 5vw 2rem;
+      }
+
+      .footer-grid {
+        display: grid;
+        grid-template-columns: 1.2fr 1fr 1fr;
+        gap: 3rem;
+        margin-bottom: 3rem;
+      }
+
+      .footer-logo {
+        font-size: 1.15rem;
+        font-weight: 800;
+        letter-spacing: -0.03em;
+        margin-bottom: 0.75rem;
+      }
+
+      .footer-tagline {
+        color: var(--text-muted);
+        max-width: 260px;
+        margin-bottom: 1rem;
+      }
+
+      .footer-location {
+        font-family: var(--mono);
+        color: var(--orange);
+        font-size: 0.78rem;
+      }
+
+      .footer-col h4 {
+        font-family: var(--mono);
+        font-size: 0.7rem;
+        color: var(--text-muted);
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        margin-bottom: 1rem;
+      }
+
+      .footer-col a {
+        display: block;
+        color: #ccc;
+        text-decoration: none;
+        margin-bottom: 0.7rem;
+        font-size: 0.9rem;
+      }
+
+      .footer-col a:hover {
+        color: var(--orange);
+      }
+
+      .footer-bottom {
+        border-top: 1px solid var(--border);
+        padding-top: 1.5rem;
+        color: var(--text-muted);
+        font-size: 0.78rem;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+
+      /* REVEAL */
+      .reveal {
+        opacity: 0;
+        transform: translateY(24px);
+        transition: 0.6s ease;
+      }
+
+      .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* MOBILE */
+      @media (max-width: 900px) {
+        #hero,
+        .why-ai-grid,
+        .footer-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .hero-canvas-wrap {
+          display: none;
+        }
+
+        .pain-cards,
+        .services-grid,
+        .packages-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .package-card.featured {
+          min-height: 560px;
+        }
+      }
+
+      @media (max-width: 640px) {
+        nav {
+          height: 64px;
+        }
+
+        .nav-links {
+          display: none;
+        }
+
+        .hamburger {
+          display: flex;
+        }
+
+        section {
+          padding: 80px 6vw;
+        }
+
+        #hero {
+          padding-top: 110px;
+        }
+
+        h1 {
+          font-size: 2.75rem;
+        }
+
+        .suba-card {
+          padding: 2rem;
+        }
+
+        .canvas-metrics,
+        .ai-stat-row {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <nav>
+      <a href="#" class="nav-logo">Riselab Studio</a>
+
+      <ul class="nav-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#results">Results</a></li>
+        <li><a href="#packages">How It Works</a></li>
+        <li><a href="#why-ai">Why Riselab</a></li>
+        <li>
+          <a href="mailto:hello@riselabstudio.com" class="nav-cta"
+            >Let's Talk</a
+          >
+        </li>
+      </ul>
+
+      <button class="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+
+    <section id="hero">
+      <div class="hero-grid-bg"></div>
+      <div class="hero-glow"></div>
+
+      <div class="hero-content">
+        <div class="availability-row">
+          <div class="availability-banner">
+            Currently onboarding new clients
+          </div>
+          <div class="status-pill">Open for growth partnerships this month</div>
+        </div>
+
+        <h1>
+          Growth that's <span class="accent">engineered</span>,<br />not
+          guessed.
+        </h1>
+
+        <p class="subheadline">
+          Riselab Studio is an AI-powered growth communications agency. We build
+          your lead pipeline, sharpen your message, and put your brand in front
+          of the people who are ready to buy.
+        </p>
+
+        <div class="hero-ctas">
+          <a href="mailto:hello@riselabstudio.com" class="btn-primary"
+            >Let's Talk →</a
+          >
+          <a href="#services" class="btn-secondary">See What We Build →</a>
+        </div>
+
+        <p class="trust-line">
+          Trusted by founders and investment firms across Nigeria and beyond
+        </p>
+      </div>
+
+      <div class="hero-canvas-wrap">
+        <div class="hero-canvas">
+          <div class="canvas-top">
+            <div class="canvas-title">Growth Intelligence</div>
+            <div class="canvas-status">AI Assisted</div>
+          </div>
+
+          <div class="canvas-section">
+            <div class="canvas-label">Lead Sources</div>
+            <div class="canvas-row">
+              <span>Investment Firms</span><strong>42</strong>
+            </div>
+            <div class="canvas-row">
+              <span>Financial Services</span><strong>18</strong>
+            </div>
+            <div class="canvas-row"><span>SMEs</span><strong>37</strong></div>
+          </div>
+
+          <div class="canvas-section">
+            <div class="canvas-label">Qualification</div>
+            <div class="canvas-row">
+              <span>Qualified Leads</span><strong>31</strong>
+            </div>
+            <div class="canvas-row">
+              <span>Warm Prospects</span><strong>22</strong>
+            </div>
+            <div class="canvas-row">
+              <span>Meetings Booked</span><strong>14</strong>
+            </div>
+          </div>
+
+          <div class="canvas-section">
+            <div class="canvas-label">Outreach</div>
+            <div class="canvas-metrics">
+              <div class="metric-box">
+                <div class="metric-value">68%</div>
+                <div class="metric-label">Open Rate</div>
+              </div>
+              <div class="metric-box">
+                <div class="metric-value">24%</div>
+                <div class="metric-label">Reply Rate</div>
+              </div>
+              <div class="metric-box">
+                <div class="metric-value">+18%</div>
+                <div class="metric-label">Conversion</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="canvas-section">
+            <div class="canvas-row">
+              <span>AI Assisted</span
+              ><strong style="color: var(--orange)">Active</strong>
+            </div>
+            <div class="canvas-row">
+              <span>Strategy Reviewed</span><strong>Yes</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="problem">
+      <div class="section-eyebrow">The problem</div>
+      <h2 class="reveal">Growth doesn't stall <em>randomly.</em></h2>
+      <p class="problem-intro reveal">
+        It stalls because the wrong people are seeing your message, the right
+        people aren't being followed up, and your content sounds like everyone
+        else in your space.
+      </p>
+
+      <div class="pain-cards">
+        <div class="pain-card reveal">
+          <h3>Prospects go cold.</h3>
+          <p>
+            You're reaching out, but nothing converts. The leads aren't
+            qualified, the timing is off, and there's no follow-up system
+            holding it together.
+          </p>
+        </div>
+
+        <div class="pain-card reveal">
+          <h3>Your content blends in.</h3>
+          <p>
+            You post. You share. And nothing sticks. No hooks, no proof points,
+            no reason for your ideal client to stop scrolling.
+          </p>
+        </div>
+
+        <div class="pain-card reveal">
+          <h3>No one knows what you do.</h3>
+          <p>
+            Your offer is real. Your results are real. But the way it's
+            communicated leaves prospects guessing — and guessing means losing.
+          </p>
+        </div>
+      </div>
+
+      <div class="diagnosis-block reveal">
+        <h3>What's costing you clients</h3>
+        <ul>
+          <li>Your offer isn't framed to convert — it's framed to explain.</li>
+          <li>Your content strategy is reactive, not built to compound.</li>
+          <li>Your outreach is volume without signal.</li>
+          <li>Your brand doesn't communicate authority in your niche.</li>
+        </ul>
+      </div>
+
+      <a href="mailto:hello@riselabstudio.com" class="btn-dark reveal"
+        >Let's Talk →</a
+      >
+    </section>
+
+    <section id="services">
+      <div class="services-header">
+        <div class="section-eyebrow">What we build</div>
+        <h2 class="reveal">AI-powered growth,<br /><em>end to end.</em></h2>
+        <p class="reveal">
+          Three practices. One team. One objective: more qualified conversations
+          with the people you actually want to serve.
+        </p>
+      </div>
+
+      <div class="services-grid">
+        <div class="service-card reveal">
+          <div class="service-icon">◎</div>
+          <h3>Lead Generation & List Building</h3>
+          <p>
+            AI-assisted prospecting to identify and qualify decision-makers by
+            industry, role, location, and intent.
+          </p>
+          <a class="service-link" href="#">Explore Capability →</a>
+        </div>
+
+        <div class="service-card reveal">
+          <div class="service-icon">✉</div>
+          <h3>Email & Outreach Strategy</h3>
+          <p>
+            Sequences that sound human, move fast, and create meaningful
+            conversations with qualified prospects.
+          </p>
+          <a class="service-link" href="#">Explore Capability →</a>
+        </div>
+
+        <div class="service-card reveal">
+          <div class="service-icon">◻</div>
+          <h3>Content & Social Media</h3>
+          <p>
+            Founder-led and brand-led content designed for visibility,
+            authority, and trust across key platforms.
+          </p>
+          <a class="service-link" href="#">Explore Capability →</a>
+        </div>
+
+        <div class="service-card reveal">
+          <div class="service-icon">⌖</div>
+          <h3>Growth Communications</h3>
+          <p>
+            Messaging that works across pitch decks, onboarding flows, landing
+            pages, sales assets, and campaigns.
+          </p>
+          <a class="service-link" href="#">Explore Capability →</a>
+        </div>
+
+        <div class="service-card reveal">
+          <div class="service-icon">⊕</div>
+          <h3>Funnel & Onboarding Audit</h3>
+          <p>
+            We diagnose where leads are dropping off and identify the friction
+            points costing you conversions.
+          </p>
+          <a class="service-link" href="#">Explore Capability →</a>
+        </div>
+
+        <div class="service-card reveal">
+          <div class="service-icon">◈</div>
+          <h3>Brand Positioning & Strategy</h3>
+          <p>
+            We define your voice, refine your story, and make your market
+            position easier to understand and remember.
+          </p>
+          <a class="service-link" href="#">Explore Capability →</a>
+        </div>
+
+        <div class="service-card specialized reveal">
+          <div class="specialized-badge">Specialized Service</div>
+          <h3>Academic Research Support</h3>
+          <p>
+            Rigorous academic and professional research support for postgraduate
+            students, researchers, and organizations.
+          </p>
+          <a class="service-link" href="#">Get Research Support →</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="packages">
+      <div class="package-intro">
+        <div class="section-eyebrow">Choose your engagement</div>
+        <h2 class="reveal">Riselab meets you<br /><em>where you are.</em></h2>
+        <p class="reveal" style="color: #666">
+          Placeholder pricing. Every engagement is scoped around your goals,
+          urgency, and delivery requirements.
+        </p>
+      </div>
+
+      <div class="packages-grid">
+        <div class="package-card reveal">
+          <div class="package-label">Riselab Build</div>
+          <h3>For founders launching from scratch</h3>
+          <p class="package-desc">
+            Build the foundations: pipeline, voice, and visibility.
+          </p>
+
+          <div class="price-label">Starting from</div>
+          <div class="price">₦450,000</div>
+
+          <ul class="pkg-items">
+            <li>AI-filtered lead list</li>
+            <li>LinkedIn and Instagram content</li>
+            <li>Three-touch outreach sequence</li>
+            <li>Messaging framework</li>
+          </ul>
+
+          <a
+            href="mailto:hello@riselabstudio.com"
+            class="pkg-cta pkg-cta-outline"
+            >Start with Build</a
+          >
+        </div>
+
+        <div class="package-card featured reveal">
+          <div class="package-top">
+            <div class="package-label">Riselab Grow</div>
+            <div class="recommended">Preferred by scaling teams</div>
+          </div>
+
+          <h3>For businesses ready to scale what works</h3>
+          <p class="package-desc">
+            Install the systems that make growth more consistent month after
+            month.
+          </p>
+
+          <div class="price-label">Starting from</div>
+          <div class="price">₦850,000 <span>/month</span></div>
+
+          <ul class="pkg-items">
+            <li>Monthly lead generation</li>
+            <li>Ongoing content strategy</li>
+            <li>Funnel and onboarding audits</li>
+            <li>Monthly communications review</li>
+            <li>Priority support and strategy calls</li>
+          </ul>
+
+          <a href="mailto:hello@riselabstudio.com" class="pkg-cta"
+            >Start with Grow</a
+          >
+        </div>
+
+        <div class="package-card reveal">
+          <div class="package-label">À La Carte</div>
+          <h3>For specific problems that need solving now</h3>
+          <p class="package-desc">
+            One focused deliverable. No full engagement required.
+          </p>
+
+          <div class="price-label">Starting from</div>
+          <div class="price">₦75,000</div>
+
+          <ul class="pkg-items">
+            <li>Lead list build</li>
+            <li>Outreach email sequence</li>
+            <li>Content calendar</li>
+            <li>Funnel audit</li>
+            <li>Research support</li>
+          </ul>
+
+          <a
+            href="mailto:hello@riselabstudio.com"
+            class="pkg-cta pkg-cta-outline"
+            >Pick a Service</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <section id="why-ai">
+      <div class="why-ai-grid">
+        <div>
+          <div class="section-eyebrow">The Riselab edge</div>
+          <h2 class="reveal">We don't guess.<br /><em>We compute.</em></h2>
+          <p class="why-ai-desc reveal">
+            AI enables faster research, sharper targeting, and more precise
+            messaging. Strategy still determines the direction.
+          </p>
+
+          <div class="ai-points">
+            <div class="ai-point reveal">
+              <div class="ai-point-icon">◎</div>
+              <div>
+                <h4>Apollo.io AI filters — not recycled spreadsheets</h4>
+                <p>
+                  Lead lists built using role-specific, sector-specific, and
+                  intent-based criteria.
+                </p>
+              </div>
+            </div>
+
+            <div class="ai-point reveal">
+              <div class="ai-point-icon">✎</div>
+              <div>
+                <h4>AI drafting + human editorial review</h4>
+                <p>
+                  Faster output without losing strategic clarity or brand voice.
+                </p>
+              </div>
+            </div>
+
+            <div class="ai-point reveal">
+              <div class="ai-point-icon">⊕</div>
+              <div>
+                <h4>Personalized outreach at scale</h4>
+                <p>Campaigns that feel specific, relevant, and human.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ai-visual reveal">
+          <div class="ai-visual-label">Pipeline health snapshot</div>
+
+          <div class="ai-bar-row">
+            <div class="ai-bar-label">
+              <span>Lead qualification rate</span><span>78%</span>
+            </div>
+            <div class="ai-bar-track">
+              <div class="ai-bar-fill" style="width: 78%"></div>
+            </div>
+          </div>
+
+          <div class="ai-bar-row">
+            <div class="ai-bar-label">
+              <span>Email open rate</span><span>62%</span>
+            </div>
+            <div class="ai-bar-track">
+              <div class="ai-bar-fill" style="width: 62%"></div>
+            </div>
+          </div>
+
+          <div class="ai-bar-row">
+            <div class="ai-bar-label">
+              <span>Outreach reply rate</span><span>41%</span>
+            </div>
+            <div class="ai-bar-track">
+              <div class="ai-bar-fill" style="width: 41%"></div>
+            </div>
+          </div>
+
+          <div class="ai-stat-row">
+            <div class="ai-stat">
+              <div class="ai-stat-num">3×</div>
+              <p>faster lead research</p>
+            </div>
+            <div class="ai-stat">
+              <div class="ai-stat-num">48h</div>
+              <p>brief to first deliverable</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="results">
+      <div class="results-intro">
+        <div class="section-eyebrow">Recent work</div>
+        <h2 class="reveal">Proof over<br /><em>promises.</em></h2>
+        <p class="reveal" style="color: #666">
+          A focused look at one current engagement. More case studies will be
+          added as the client roster grows.
+        </p>
+      </div>
+
+      <div class="suba-card reveal">
+        <div class="result-tags">
+          <span class="tag">Lead Generation</span>
+          <span class="tag">Funnel Audit</span>
+          <span class="tag">Financial Services</span>
+        </div>
+
+        <h3>Suba Capital</h3>
+        <div class="result-meta">
+          Investment Firm · South South Nigeria + West Yorkshire, UK
+        </div>
+
+        <div class="case-grid">
+          <div class="case-row">
+            <strong>Challenge</strong>
+            <p>
+              KYC drop-off was reducing onboarding completion and weakening the
+              conversion path.
+            </p>
+          </div>
+
+          <div class="case-row">
+            <strong>Approach</strong>
+            <p>
+              We used Apollo.io targeting, AI-assisted qualification, email list
+              review, and funnel diagnostics to identify where prospects were
+              leaking.
+            </p>
+          </div>
+
+          <div class="case-row">
+            <strong>Outcome</strong>
+            <p>
+              Month One deliverables were completed successfully, including lead
+              qualification datasets and funnel recommendations.
+            </p>
+          </div>
+        </div>
+
+        <div class="case-outcome">
+          <strong
+            style="color: var(--orange); display: block; margin-bottom: 0.35rem"
+            >Month One Complete</strong
+          >
+          Lead dataset delivered. Funnel leak identified. Recommendations
+          prepared.
+        </div>
+      </div>
+    </section>
+
+    <section id="faq">
+      <div class="section-eyebrow">Questions, answered</div>
+      <h2 class="reveal">You probably<br /><em>want to know…</em></h2>
+
+      <div class="faq-list">
+        <div class="faq-item">
+          <div class="faq-q">How fast do you start? <span>+</span></div>
+          <div class="faq-a">
+            <p>
+              Usually within the week. After an initial call, we scope the
+              project and move.
+            </p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">What does it cost? <span>+</span></div>
+          <div class="faq-a">
+            <p>
+              Pricing is scoped to your goals. The starting prices shown are
+              placeholders.
+            </p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">Do you really use AI? <span>+</span></div>
+          <div class="faq-a">
+            <p>
+              Yes. AI powers research, prospecting, diagnostics, and drafting.
+              Human strategy reviews every output.
+            </p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">Can you work internationally? <span>+</span></div>
+          <div class="faq-a">
+            <p>
+              Yes. Riselab Studio works with founders, firms, SMEs, and agencies
+              across Nigeria and beyond.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="cta">
+      <div class="section-eyebrow">Ready?</div>
+      <h2 class="reveal">Ready to grow<br /><em>with intention?</em></h2>
+      <p class="reveal">
+        Send us a message. We'll get back within 24 hours with a clear next
+        step.
+      </p>
+      <a href="mailto:hello@riselabstudio.com" class="btn-primary reveal"
+        >Let's Talk →</a
+      >
+    </section>
+
+    <footer>
+      <div class="footer-grid">
+        <div>
+          <div class="footer-logo">Riselab Studio</div>
+          <div class="footer-tagline">
+            AI-powered growth. Built for ambition.
+          </div>
+          <div class="footer-location">Abuja, Nigeria</div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Practices</h4>
+          <a href="#services">Growth Intelligence</a>
+          <a href="#services">Growth Communications</a>
+          <a href="#services">Research Support</a>
+        </div>
+
+        <div class="footer-col">
+          <h4>Connect</h4>
+          <a href="#">LinkedIn</a>
+          <a href="#">Instagram</a>
+          <a href="mailto:hello@riselabstudio.com">Email</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2026 Riselab Studio. All rights reserved.</span>
+        <span>hello@riselabstudio.com</span>
+      </div>
+    </footer>
+
+    <script>
+      document.querySelectorAll(".faq-q").forEach((q) => {
+        q.addEventListener("click", () => {
+          const item = q.parentElement;
+          const open = item.classList.contains("open");
+
+          document.querySelectorAll(".faq-item").forEach((i) => {
+            i.classList.remove("open");
+          });
+
+          if (!open) {
+            item.classList.add("open");
+          }
+        });
+      });
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.1 },
+      );
+
+      document
+        .querySelectorAll(".reveal")
+        .forEach((el) => observer.observe(el));
+    </script>
+  </body>
+</html>
