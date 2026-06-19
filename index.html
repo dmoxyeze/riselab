@@ -884,11 +884,15 @@
         background: var(--ink);
       }
       .res-header {
-        display: flex;
+        /* display: flex;
         justify-content: space-between;
         align-items: flex-end;
         margin-bottom: 64px;
-        gap: 32px;
+        gap: 32px; */
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 5rem;
+        align-items: center;
       }
       .res-header p {
         color: var(--dim3);
