@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Riselab Studio — AI-Powered Growth</title>
+    <title>Riselab Studio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link
-      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,300&family=DM+Mono:wght@400;500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,300;1,9..40,700&display=swap"
       rel="stylesheet"
     />
     <style>
@@ -17,33 +17,52 @@
         margin: 0;
         padding: 0;
       }
-
       :root {
+        --o: #c45b1a;
+        --o2: #e06a25;
         --orange: #c45b1a;
-        --orange-light: #d96e2a;
-        --orange-dim: rgba(196, 91, 26, 0.12);
+        --o3: rgba(196, 91, 26, 0.15);
+        --o4: rgba(196, 91, 26, 0.07);
         --black: #1a1a1a;
+        --ink: #0d0d0b;
+        --ink2: #141412;
+        --ink3: #1e1e1a;
+        --cream: #f5f5f2;
+        --cream2: #eeecea;
         --off-white: #f5f5f2;
-        --mid: #2c2c2a;
         --border: rgba(255, 255, 255, 0.08);
-        --border-light: rgba(26, 26, 26, 0.1);
-        --text-muted: #888884;
+        --dim: #5a5a55;
+        --dim1: #666;
+        --dim2: #888884;
+        --dim3: #aaaaaa;
+        --line: rgba(255, 255, 255, 0.07);
+        --line2: rgba(255, 255, 255, 0.12);
         --mono: "DM Mono", monospace;
       }
+      html,
+      body {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+      }
 
+      img,
+      svg,
+      canvas {
+        max-width: 100%;
+      }
       html {
         scroll-behavior: smooth;
       }
       body {
         font-family: "DM Sans", sans-serif;
-        background: var(--black);
-        color: var(--off-white);
-        font-size: 16px;
-        line-height: 1.6;
+        background: var(--ink);
+        color: var(--cream);
         -webkit-font-smoothing: antialiased;
+        overflow-x: hidden;
       }
 
-      /* ── NAV ── */
+      /* ─── NAV ─── */
       nav {
         position: fixed;
         top: 0;
@@ -55,9 +74,9 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        background: rgba(26, 26, 26, 0.92);
-        backdrop-filter: blur(12px);
-        border-bottom: 1px solid var(--border);
+        background: rgba(13, 13, 11, 0.88);
+        backdrop-filter: blur(20px);
+        border-bottom: 1px solid var(--line);
       }
       .nav-logo {
         font-size: 1rem;
@@ -77,12 +96,12 @@
       }
       .nav-links a {
         font-size: 0.875rem;
-        color: var(--text-muted);
+        color: var(--dim2);
         text-decoration: none;
         transition: color 0.2s;
       }
       .nav-links a:hover {
-        color: var(--off-white);
+        color: var(--cream);
       }
       .nav-cta {
         background: var(--orange);
@@ -111,963 +130,1108 @@
         background: var(--off-white);
         border-radius: 2px;
       }
-
-      /* ── HERO ── */
-      #hero {
-        min-height: 100vh;
-        padding: 120px 5vw 80px;
+      .logo b {
+        color: var(--o);
+      }
+      .nav-r {
         display: flex;
-        flex-direction: column;
-        justify-content: center;
-        position: relative;
-        overflow: hidden;
-        background: var(--black);
-      }
-      .hero-grid-bg {
-        position: absolute;
-        inset: 0;
-        z-index: 0;
-        background-image:
-          linear-gradient(rgba(196, 91, 26, 0.04) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(196, 91, 26, 0.04) 1px, transparent 1px);
-        background-size: 60px 60px;
-      }
-      .hero-glow {
-        position: absolute;
-        top: -10%;
-        right: -5%;
-        z-index: 0;
-        width: 600px;
-        height: 600px;
-        background: radial-gradient(
-          circle,
-          rgba(196, 91, 26, 0.15) 0%,
-          transparent 70%
-        );
-        pointer-events: none;
-      }
-      .hero-content {
-        position: relative;
-        z-index: 1;
-        max-width: 860px;
-      }
-
-      .availability-banner {
-        display: inline-flex;
         align-items: center;
-        gap: 10px;
-        margin-bottom: 2rem;
-        font-family: var(--mono);
-        font-size: 0.75rem;
-        letter-spacing: 0.05em;
-        color: var(--text-muted);
-        text-transform: uppercase;
+        gap: 32px;
       }
-      .availability-banner::before {
-        content: "";
-        display: block;
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
-        background: #4ade80;
-        box-shadow: 0 0 8px rgba(74, 222, 128, 0.6);
-        animation: pulse 2s infinite;
+      .nav-r a {
+        font-size: 12px;
+        color: var(--dim2);
+        text-decoration: none;
+        letter-spacing: 0.04em;
+        transition: color 0.2s;
       }
-      @keyframes pulse {
-        0%,
-        100% {
-          opacity: 1;
-        }
-        50% {
-          opacity: 0.4;
-        }
+      .nav-r a:hover {
+        color: var(--cream);
       }
-      .status-pill {
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        background: var(--orange-dim);
-        border: 1px solid rgba(196, 91, 26, 0.3);
-        border-radius: 100px;
-        padding: 0.3rem 0.9rem;
-        font-size: 0.8rem;
-        color: var(--orange-light);
-        margin-left: 1rem;
-      }
-
-      h1 {
-        font-size: clamp(2.8rem, 6vw, 5.5rem);
-        font-weight: 700;
-        line-height: 1.07;
-        letter-spacing: -0.03em;
-        margin-bottom: 1.5rem;
-      }
-      h1 .accent {
-        color: var(--orange);
-      }
-      h1 em {
-        font-style: italic;
-        font-weight: 300;
-        color: var(--orange);
-      }
-      .subheadline {
-        font-size: clamp(1rem, 1.6vw, 1.2rem);
-        color: #aaaaa6;
-        line-height: 1.7;
-        max-width: 560px;
-        margin-bottom: 2.5rem;
-      }
-      .hero-ctas {
-        display: flex;
-        gap: 1rem;
-        flex-wrap: wrap;
-        margin-bottom: 2rem;
-      }
-      .btn-primary {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        background: var(--orange);
-        color: #fff;
-        padding: 0.85rem 1.75rem;
-        border-radius: 8px;
-        font-size: 0.95rem;
+      .nav-cta {
+        padding: 8px 20px;
+        background: var(--o);
+        color: #fff !important;
+        border-radius: 6px;
+        font-size: 12px;
         font-weight: 600;
+        letter-spacing: 0.04em;
         text-decoration: none;
         transition:
           background 0.2s,
           transform 0.15s;
       }
-      .btn-primary:hover {
-        background: var(--orange-light);
+      .nav-cta:hover {
+        background: var(--o2);
         transform: translateY(-1px);
       }
-      .btn-secondary {
+
+      /* ─── HERO ─── */
+      #hero {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 0 48px 80px;
+        position: relative;
+        overflow: hidden;
+      }
+      canvas#bg {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        opacity: 0.5;
+      }
+      .hero-noise {
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        background: radial-gradient(
+          ellipse 80% 60% at 60% 40%,
+          rgba(196, 91, 26, 0.08) 0%,
+          transparent 70%
+        );
+        pointer-events: none;
+      }
+      .big-num {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -54%);
+        font-family: var(--mono);
+        font-size: clamp(200px, 28vw, 420px);
+        font-weight: 500;
+        color: rgba(255, 255, 255, 0.018);
+        line-height: 1;
+        letter-spacing: -0.04em;
+        user-select: none;
+        z-index: 1;
+        white-space: nowrap;
+      }
+      .hero-content {
+        position: relative;
+        z-index: 2;
+        max-width: 1200px;
+      }
+      .hero-tag {
         display: inline-flex;
         align-items: center;
         gap: 8px;
-        background: transparent;
-        color: var(--off-white);
-        padding: 0.85rem 1.75rem;
-        border-radius: 8px;
-        border: 1px solid var(--border);
-        font-size: 0.95rem;
-        font-weight: 500;
-        text-decoration: none;
-        transition:
-          border-color 0.2s,
-          transform 0.15s;
-      }
-      .btn-secondary:hover {
-        border-color: rgba(255, 255, 255, 0.25);
-        transform: translateY(-1px);
-      }
-      .trust-line {
-        font-size: 0.8rem;
-        color: var(--text-muted);
         font-family: var(--mono);
-        letter-spacing: 0.03em;
+        font-size: 11px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--dim3);
+        margin-bottom: 40px;
       }
-      .trust-line span {
-        color: var(--orange);
-      }
-
-      /* ── PIPELINE VISUAL ── */
-      .hero-visual {
-        position: absolute;
-        right: 5vw;
-        bottom: 80px;
-        z-index: 1;
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        opacity: 0.85;
-      }
-      .lead-card {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        background: rgba(255, 255, 255, 0.04);
-        border: 1px solid var(--border);
-        border-radius: 10px;
-        padding: 10px 16px;
-        font-family: var(--mono);
-        font-size: 0.72rem;
-        color: #aaa;
-        animation: slideIn 0.5s ease both;
-      }
-      .lead-card:nth-child(2) {
-        animation-delay: 0.2s;
-      }
-      .lead-card:nth-child(3) {
-        animation-delay: 0.4s;
-      }
-      .lead-card:nth-child(4) {
-        animation-delay: 0.6s;
-      }
-      @keyframes slideIn {
-        from {
-          opacity: 0;
-          transform: translateX(20px);
-        }
-        to {
-          opacity: 1;
-          transform: translateX(0);
-        }
-      }
-      .lead-tag {
-        background: var(--orange-dim);
-        color: var(--orange);
-        border-radius: 4px;
-        padding: 2px 6px;
-        font-size: 0.65rem;
-        font-weight: 500;
-      }
-      .lead-dot {
+      .pulse-dot {
         width: 6px;
         height: 6px;
         border-radius: 50%;
         background: #4ade80;
         flex-shrink: 0;
+        animation: pdot 2s infinite;
       }
-
-      /* ── SECTIONS COMMON ── */
-      section {
-        padding: 100px 5vw;
+      @keyframes pdot {
+        0%,
+        100% {
+          box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.5);
+        }
+        50% {
+          box-shadow: 0 0 0 6px rgba(74, 222, 128, 0);
+        }
       }
-      .section-eyebrow {
-        font-family: var(--mono);
-        font-size: 0.72rem;
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
-        color: var(--orange);
-        margin-bottom: 1.2rem;
-      }
-      h2 {
-        font-size: clamp(2rem, 4vw, 3.5rem);
+      h1 {
+        font-size: clamp(52px, 8.5vw, 130px);
         font-weight: 700;
-        line-height: 1.1;
-        letter-spacing: -0.025em;
-        margin-bottom: 1.25rem;
+        line-height: 0.95;
+        letter-spacing: -0.04em;
+        margin-bottom: 0;
       }
-      h2 em {
-        font-style: normal;
-        color: var(--orange);
+      h1 .line {
+        display: block;
       }
-
-      h2 em.random {
+      h1 .line.orange {
+        color: var(--o);
+      }
+      h1 .ital {
         font-style: italic;
-        color: var(--orange);
+        font-weight: 300;
+        color: var(--o);
       }
-
-      /* ── PROBLEM SECTION ── */
-      #problem {
-        background: var(--off-white);
+      .ital {
+        font-style: italic;
+      }
+      .black {
         color: var(--black);
       }
-      #problem .section-eyebrow {
-        color: var(--orange);
+      .hero-bottom {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        margin-top: 56px;
+        gap: 40px;
+        flex-wrap: wrap;
       }
-      #problem h2 {
-        color: var(--black);
-      }
-      #problem h2 em {
-        color: var(--orange);
-      }
-      .problem-intro {
-        font-size: 1.1rem;
-        color: #555;
-        max-width: 640px;
-        margin-bottom: 3rem;
+      .hero-sub {
+        font-size: 16px;
+        color: var(--dim3);
         line-height: 1.7;
+        max-width: 420px;
       }
-      .pain-cards {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 1.5rem;
-        margin-bottom: 3rem;
-      }
-      .pain-card {
-        background: #fff;
-        border: 1px solid var(--border-light);
-        border-radius: 14px;
-        padding: 2rem;
-        transition:
-          transform 0.2s,
-          box-shadow 0.2s;
-        border-left: 3px solid transparent;
-      }
-      .pain-card:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
-        border-left-color: var(--orange);
-      }
-      .pain-card h3 {
-        font-size: 1.1rem;
-        font-weight: 700;
-        color: var(--black);
-        margin-bottom: 0.75rem;
-      }
-      .pain-card p {
-        font-size: 0.9rem;
-        color: #666;
-        line-height: 1.65;
-      }
-
-      .diagnosis-block {
-        background: var(--black);
-        color: var(--off-white);
-        border-radius: 14px;
-        padding: 2.5rem 3rem;
-        margin-bottom: 2rem;
-      }
-      .diagnosis-block h3 {
-        font-size: 1rem;
-        font-weight: 500;
-        color: var(--text-muted);
-        margin-bottom: 1.25rem;
-        font-family: var(--mono);
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-      }
-      .diagnosis-block ul {
-        list-style: none;
+      .hero-actions {
         display: flex;
         flex-direction: column;
-        gap: 0.75rem;
+        align-items: flex-end;
+        gap: 16px;
       }
-      .diagnosis-block li {
-        font-size: 0.95rem;
-        padding-left: 1.25rem;
-        position: relative;
-        color: #ccc;
-      }
-      .diagnosis-block li::before {
-        content: "↗";
-        position: absolute;
-        left: 0;
-        color: var(--orange);
-        font-size: 0.8rem;
-      }
-
-      .problem-cta {
-        display: flex;
+      .btn-main {
+        display: inline-flex;
         align-items: center;
-        gap: 1rem;
+        gap: 12px;
+        background: var(--o);
+        color: #fff;
+        padding: 16px 32px;
+        border-radius: 8px;
+        font-size: 14px;
+        font-weight: 600;
+        text-decoration: none;
+        letter-spacing: 0.02em;
+        transition:
+          background 0.2s,
+          transform 0.15s;
+        white-space: nowrap;
       }
-      .btn-dark {
+      .btn-main:hover {
+        background: var(--o2);
+        transform: translateY(-2px);
+      }
+      .btn-ghost {
         display: inline-flex;
         align-items: center;
         gap: 8px;
-        background: var(--black);
-        color: var(--off-white);
-        padding: 0.85rem 1.75rem;
+        color: var(--dim3);
+        font-size: 13px;
+        text-decoration: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+        padding-bottom: 2px;
+        transition:
+          color 0.2s,
+          border-color 0.2s;
+      }
+      .btn-ghost:hover {
+        color: var(--cream);
+        border-color: rgba(255, 255, 255, 0.4);
+      }
+      .trust {
+        font-family: var(--mono);
+        font-size: 11px;
+        color: var(--dim);
+        letter-spacing: 0.05em;
+      }
+      .trust span {
+        color: var(--o);
+      }
+
+      /* scroll indicator */
+      .scroll-line {
+        position: absolute;
+        bottom: 32px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+        z-index: 2;
+      }
+      .scroll-line span {
+        font-family: var(--mono);
+        font-size: 10px;
+        letter-spacing: 0.1em;
+        color: var(--dim);
+        text-transform: uppercase;
+      }
+      .scroll-bar {
+        width: 1px;
+        height: 48px;
+        background: var(--line2);
+        position: relative;
+        overflow: hidden;
+      }
+      .scroll-bar::after {
+        content: "";
+        position: absolute;
+        top: -100%;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: var(--o);
+        animation: scrollDown 1.8s ease infinite;
+      }
+      @keyframes scrollDown {
+        0% {
+          top: -100%;
+        }
+        100% {
+          top: 200%;
+        }
+      }
+
+      /* ─── TICKER ─── */
+      .ticker-wrap {
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+        background: var(--ink2);
+        padding: 14px 0;
+        overflow: hidden;
+      }
+      .ticker {
+        display: flex;
+        width: max-content;
+        animation: tick 30s linear infinite;
+      }
+      .ticker:hover {
+        animation-play-state: paused;
+      }
+      @keyframes tick {
+        from {
+          transform: translateX(0);
+        }
+        to {
+          transform: translateX(-50%);
+        }
+      }
+      .tick-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 0 32px;
+        font-family: var(--mono);
+        font-size: 12px;
+        color: var(--dim2);
+        white-space: nowrap;
+        border-right: 1px solid var(--line);
+      }
+      .tick-item .dot {
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+        background: var(--o);
+        flex-shrink: 0;
+      }
+
+      /* ─── SECTION COMMON ─── */
+      .section {
+        padding: 120px 48px;
+      }
+      .eyebrow {
+        font-family: var(--mono);
+        font-size: 11px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--o);
+        margin-bottom: 20px;
+      }
+      h2 {
+        font-size: clamp(36px, 5vw, 72px);
+        font-weight: 700;
+        line-height: 1;
+        letter-spacing: -0.03em;
+      }
+      h2 em {
+        font-style: normal;
+        font-weight: 300;
+        color: var(--o);
+      }
+
+      /* ─── PROBLEM ─── */
+      #problem {
+        background: var(--cream);
+        color: var(--ink);
+        position: relative;
+        overflow: hidden;
+      }
+      #problem .eyebrow {
+        color: var(--o);
+      }
+      #problem h2 {
+        color: var(--ink);
+      }
+      .prob-giant {
+        position: absolute;
+        right: -40px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-family: var(--mono);
+        font-size: clamp(200px, 22vw, 360px);
+        font-weight: 500;
+        color: rgba(0, 0, 0, 0.04);
+        line-height: 1;
+        user-select: none;
+        letter-spacing: -0.04em;
+      }
+      .prob-layout {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 80px;
+        align-items: start;
+        position: relative;
+        z-index: 1;
+      }
+      .prob-left h2 {
+        margin-bottom: 24px;
+      }
+      .prob-left p {
+        font-size: 17px;
+        color: #555;
+        line-height: 1.75;
+        margin-bottom: 40px;
+      }
+      .prob-cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: var(--ink);
+        color: var(--cream);
+        padding: 14px 28px;
         border-radius: 8px;
-        font-size: 0.9rem;
+        font-size: 13px;
         font-weight: 600;
         text-decoration: none;
         transition: background 0.2s;
       }
-      .btn-dark:hover {
-        background: #2c2c2a;
+      .prob-cta:hover {
+        background: var(--ink3);
       }
-
-      /* ── SERVICES ── */
-      #services {
-        background: #fff;
-        color: var(--black);
-      }
-      .services-header {
-        max-width: 680px;
-        margin-bottom: 3rem;
-      }
-      .services-header p {
-        color: var(--text-muted);
-        font-size: 1rem;
-        line-height: 1.7;
-      }
-      .services-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 1.25rem;
-      }
-      .service-card {
-        background: #fff;
-        border: 1px solid var(--border-light);
-        border-radius: 18px;
-        padding: 2rem;
-        min-height: 300px;
+      .prob-right {
         display: flex;
         flex-direction: column;
-        transition: 0.2s;
+        gap: 0;
       }
-      .service-card:hover {
-        transform: translateY(-4px);
-        border-color: rgba(196, 91, 26, 0.4);
-      }
-      .service-icon {
-        width: 42px;
-        height: 42px;
-        border-radius: 12px;
-        background: var(--orange-dim);
-        color: var(--orange);
-        display: grid;
-        place-items: center;
-        margin-bottom: 1.25rem;
-      }
-
-      .service-card h3 {
-        font-size: 1.05rem;
-        margin-bottom: 0.75rem;
-      }
-      .service-card p {
-        color: #666;
-        font-size: 0.9rem;
-        flex: 1;
-      }
-
-      .service-link {
-        margin-top: 1.2rem;
-        color: var(--orange);
-        font-family: var(--mono);
-        font-size: 0.78rem;
-        text-decoration: none;
-      }
-      .service-link:hover {
-        opacity: 0.7;
-      }
-      .service-card.specialized {
-        background: var(--black);
-        color: var(--off-white);
-        border-color: rgba(255, 255, 255, 0.08);
-      }
-
-      .specialized-badge {
-        align-self: flex-start;
-        background: var(--orange);
-        color: #fff;
-        padding: 0.3rem 0.65rem;
-        border-radius: 999px;
-        font-family: var(--mono);
-        font-size: 0.62rem;
-        letter-spacing: 0.08em;
-        margin-bottom: 1.3rem;
-      }
-
-      /* ── PACKAGES ── */
-      #packages {
-        background: var(--off-white);
-        color: var(--black);
-      }
-      #packages .section-eyebrow {
-        color: var(--orange);
-      }
-      #packages h2 {
-        color: var(--black);
-      }
-      .packages-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 1.5rem;
-        margin-top: 3rem;
-      }
-      .package-card {
-        background: #fff;
-        border: 1px solid var(--border-light);
-        border-radius: 16px;
-        padding: 2rem;
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-        transition:
-          transform 0.2s,
-          box-shadow 0.2s;
-      }
-      .package-card:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
-      }
-      .package-card.featured {
-        background: var(--black);
-        color: var(--off-white);
-        border-color: var(--orange);
-      }
-      .package-label {
-        font-family: var(--mono);
-        font-size: 0.7rem;
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
-        color: var(--orange);
-      }
-      .package-card h3 {
-        font-size: 1.3rem;
-        font-weight: 700;
-      }
-      .package-card .pkg-sub {
-        font-size: 0.875rem;
-        color: #888;
-      }
-      .package-card.featured .pkg-sub {
-        color: #aaa;
-      }
-      .package-desc {
-        font-size: 0.9rem;
-        color: #555;
-        line-height: 1.65;
-      }
-      .package-card.featured .package-desc {
-        color: #aaa;
-      }
-      .pkg-divider {
-        border: none;
-        border-top: 1px solid var(--border-light);
-        margin: 0.25rem 0;
-      }
-      .package-card.featured .pkg-divider {
-        border-color: var(--border);
-      }
-      .pkg-items {
-        list-style: none;
-        display: flex;
-        flex-direction: column;
-        gap: 0.55rem;
-        flex: 1;
-      }
-      .pkg-items li {
-        font-size: 0.85rem;
-        color: #555;
-        padding-left: 1.2rem;
+      .pain {
+        padding: 28px 0;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.08);
         position: relative;
       }
-      .package-card.featured .pkg-items li {
-        color: #ccc;
+      .pain:first-child {
+        border-top: 1px solid rgba(0, 0, 0, 0.08);
       }
-      .pkg-items li::before {
-        content: "✓";
-        position: absolute;
-        left: 0;
-        color: var(--orange);
+      .pain-num {
+        font-family: var(--mono);
+        font-size: 11px;
+        color: rgba(0, 0, 0, 0.3);
+        letter-spacing: 0.08em;
+        margin-bottom: 8px;
+      }
+      .pain h3 {
+        font-size: 20px;
         font-weight: 700;
-        font-size: 0.8rem;
+        color: var(--ink);
+        margin-bottom: 8px;
+        letter-spacing: -0.02em;
       }
-      .pkg-cta {
-        display: block;
-        text-align: center;
-        background: var(--orange);
-        color: #fff;
-        padding: 0.8rem;
-        border-radius: 8px;
-        font-weight: 600;
-        font-size: 0.9rem;
-        text-decoration: none;
-        transition: background 0.2s;
-        margin-top: auto;
+      .pain p {
+        font-size: 14px;
+        color: #666;
+        line-height: 1.65;
       }
-      .pkg-cta:hover {
-        background: var(--orange-light);
+      .diag {
+        background: var(--ink);
+        border-radius: 16px;
+        padding: 40px;
+        margin-top: 48px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
       }
-      .pkg-cta-outline {
-        background: transparent;
-        border: 1.5px solid var(--border-light);
-        color: var(--black);
+      .diag-head {
+        font-family: var(--mono);
+        font-size: 11px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--dim2);
+        margin-bottom: 16px;
+        grid-column: 1/-1;
       }
-      .pkg-cta-outline:hover {
-        background: var(--orange);
-        color: #fff;
-        border-color: var(--orange);
+      .diag li {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        font-size: 14px;
+        color: #ccc;
+        line-height: 1.6;
+        list-style: none;
+      }
+      .diag li::before {
+        content: "↗";
+        color: var(--o);
+        font-size: 12px;
+        margin-top: 3px;
+        flex-shrink: 0;
       }
 
-      /* ── WHY AI ── */
-      #why-ai {
-        background: var(--black);
+      /* ─── SERVICES ─── */
+      #services {
+        background: var(--ink);
       }
-      .why-ai-grid {
+      .svc-header {
+        /* display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        margin-bottom: 72px;
+        gap: 40px; */
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 5rem;
         align-items: center;
       }
-      .why-ai-desc {
-        font-size: 1rem;
-        color: var(--text-muted);
+      .svc-header p {
+        font-size: 16px;
+        color: var(--dim3);
+        max-width: 380px;
         line-height: 1.75;
-        margin-bottom: 2.5rem;
       }
-      .ai-points {
+      .svc-list {
         display: flex;
         flex-direction: column;
-        gap: 1.25rem;
+        border-top: 1px solid var(--line);
       }
-      .ai-point {
-        display: flex;
-        gap: 1rem;
-        align-items: flex-start;
+      .svc-row {
+        display: grid;
+        grid-template-columns: 56px 1fr auto;
+        align-items: center;
+        gap: 32px;
+        padding: 28px 0;
+        border-bottom: 1px solid var(--line);
+        cursor: pointer;
+        transition: background 0.2s;
+        position: relative;
       }
-      .ai-point-icon {
+      .svc-row::before {
+        content: "";
+        position: absolute;
+        left: -48px;
+        right: -48px;
+        top: 0;
+        bottom: 0;
+        background: var(--o4);
+        opacity: 0;
+        transition: opacity 0.3s;
+      }
+      .svc-row:hover::before {
+        opacity: 1;
+      }
+      .svc-n {
+        font-family: var(--mono);
+        font-size: 12px;
+        color: var(--dim);
+        letter-spacing: 0.06em;
+      }
+      .svc-info {
+        position: relative;
+        z-index: 1;
+      }
+      .svc-info h3 {
+        font-size: 22px;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        margin-bottom: 6px;
+        transition: color 0.2s;
+      }
+      .svc-row:hover .svc-info h3 {
+        color: var(--o);
+      }
+      .svc-info p {
+        font-size: 14px;
+        color: var(--dim3);
+        line-height: 1.6;
+      }
+      .svc-arrow {
+        font-size: 24px;
+        color: var(--dim);
+        transition:
+          color 0.2s,
+          transform 0.2s;
+        position: relative;
+        z-index: 1;
         flex-shrink: 0;
+      }
+      .svc-row:hover .svc-arrow {
+        color: var(--o);
+        transform: translate(4px, -4px);
+      }
+
+      /* ─── PACKAGES ─── */
+      #packages {
+        background: var(--ink2);
+      }
+      .pkg-header {
+        margin-bottom: 72px;
+      }
+      .pkg-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1px;
+        background: var(--line);
+      }
+      .pkg {
+        background: var(--ink2);
+        padding: 48px 40px;
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        position: relative;
+        transition: background 0.3s;
+      }
+      .pkg:hover {
+        background: var(--ink3);
+      }
+      .pkg.hot {
+        background: var(--ink3);
+      }
+      .hot-badge {
+        display: inline-block;
+        padding: 4px 10px;
+        border-radius: 4px;
+        background: var(--o3);
+        border: 1px solid rgba(196, 91, 26, 0.3);
+        font-family: var(--mono);
+        font-size: 10px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--o);
+        width: fit-content;
+      }
+      .pkg-name {
+        font-size: 28px;
+        font-weight: 700;
+        letter-spacing: -0.03em;
+      }
+      .pkg-for {
+        font-size: 13px;
+        color: var(--dim3);
+        line-height: 1.65;
+      }
+      .pkg-divider {
+        border: none;
+        border-top: 1px solid var(--line);
+        margin: 0;
+      }
+      .pkg-items {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        flex: 1;
+      }
+      .pkg-items li {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        font-size: 14px;
+        color: var(--dim3);
+        line-height: 1.5;
+      }
+      .pkg-items li span.chk {
+        color: var(--o);
+        font-size: 12px;
+        margin-top: 3px;
+        flex-shrink: 0;
+      }
+      .pkg-btn {
+        display: block;
+        text-align: center;
+        padding: 14px;
+        border-radius: 8px;
+        font-size: 14px;
+        font-weight: 600;
+        text-decoration: none;
+        letter-spacing: 0.02em;
+        transition:
+          background 0.2s,
+          color 0.2s,
+          border-color 0.2s;
+      }
+      .pkg-btn-solid {
+        background: var(--o);
+        color: #fff;
+      }
+      .pkg-btn-solid:hover {
+        background: var(--o2);
+      }
+      .pkg-btn-out {
+        border: 1px solid var(--line2);
+        color: var(--cream);
+      }
+      .pkg-btn-out:hover {
+        border-color: var(--o);
+        color: var(--o);
+      }
+
+      /* ─── WHY AI ─── */
+      #why-ai {
+        background: var(--cream);
+        color: var(--ink);
+      }
+      #why-ai .eyebrow {
+        color: var(--o);
+      }
+      #why-ai h2 {
+        color: var(--ink);
+        margin-bottom: 20px;
+      }
+      .ai-layout {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 100px;
+        align-items: start;
+      }
+      .ai-desc {
+        font-size: 16px;
+        color: #666;
+        line-height: 1.8;
+        margin-bottom: 48px;
+      }
+      .ai-quote {
+        border-left: 3px solid var(--o);
+        padding-left: 24px;
+        font-size: 19px;
+        font-weight: 500;
+        color: var(--ink);
+        line-height: 1.5;
+        font-style: italic;
+        margin-bottom: 48px;
+      }
+      .ai-stat-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1px;
+        background: rgba(0, 0, 0, 0.1);
+        border-radius: 12px;
+        overflow: hidden;
+      }
+      .ai-stat {
+        background: var(--cream2);
+        padding: 28px 24px;
+      }
+      .ai-stat-n {
+        font-family: var(--mono);
+        font-size: 42px;
+        font-weight: 500;
+        color: var(--ink);
+        letter-spacing: -0.04em;
+        line-height: 1;
+      }
+      .ai-stat-n span {
+        color: var(--o);
+      }
+      .ai-stat-l {
+        font-size: 13px;
+        color: #888;
+        margin-top: 6px;
+        line-height: 1.5;
+      }
+      .ai-points-right {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+      }
+      .ai-pt {
+        padding: 36px 0;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+        display: grid;
+        grid-template-columns: 36px 1fr;
+        gap: 20px;
+        align-items: start;
+      }
+      .ai-pt:first-child {
+        border-top: 1px solid rgba(0, 0, 0, 0.08);
+      }
+      .ai-pt-icon {
         width: 36px;
         height: 36px;
         border-radius: 8px;
-        background: var(--orange-dim);
+        background: var(--o3);
         border: 1px solid rgba(196, 91, 26, 0.2);
         display: grid;
         place-items: center;
-        color: var(--orange);
-        font-size: 0.9rem;
-        margin-top: 2px;
+        font-size: 16px;
+        color: var(--o);
+        flex-shrink: 0;
       }
-      .ai-point-text h4 {
-        font-size: 0.9rem;
+      .ai-pt-icon svg {
+        width: 16px;
+        height: 16px;
+        stroke: var(--o);
+        fill: none;
+        stroke-width: 1.5;
+      }
+      .ai-pt h4 {
+        font-size: 16px;
         font-weight: 600;
-        color: var(--off-white);
-        margin-bottom: 0.3rem;
+        color: var(--ink);
+        margin-bottom: 6px;
       }
-      .ai-point-text p {
-        font-size: 0.85rem;
-        color: var(--text-muted);
+      .ai-pt p {
+        font-size: 14px;
+        color: #666;
         line-height: 1.6;
       }
-      .ai-visual {
-        background: var(--mid);
-        border: 1px solid var(--border);
-        border-radius: 18px;
-        padding: 2rem;
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
+
+      /* ─── RESULTS ─── */
+      #results {
+        background: var(--ink);
       }
-      .ai-visual-label {
-        font-family: var(--mono);
-        font-size: 0.7rem;
-        color: var(--text-muted);
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
-      }
-      .ai-bar-row {
-        display: flex;
-        flex-direction: column;
-        gap: 0.35rem;
-      }
-      .ai-bar-label {
+      .res-header {
         display: flex;
         justify-content: space-between;
-        font-size: 0.78rem;
-        color: #aaa;
+        align-items: flex-end;
+        margin-bottom: 64px;
+        gap: 32px;
       }
-      .ai-bar-track {
-        background: rgba(255, 255, 255, 0.06);
-        border-radius: 4px;
-        height: 6px;
-        overflow: hidden;
-      }
-      .ai-bar-fill {
-        height: 100%;
-        border-radius: 4px;
-        background: linear-gradient(90deg, var(--orange), var(--orange-light));
-        animation: fillBar 1.2s ease both;
-      }
-      @keyframes fillBar {
-        from {
-          width: 0;
-        }
-      }
-      .ai-stat-row {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 1rem;
-        margin-top: 0.5rem;
-      }
-      .ai-stat {
-        background: rgba(255, 255, 255, 0.04);
-        border-radius: 10px;
-        padding: 1rem;
-      }
-      .ai-stat-num {
-        font-size: 1.6rem;
-        font-weight: 700;
-        color: var(--orange);
-        letter-spacing: -0.03em;
-      }
-      .ai-stat-desc {
-        font-size: 0.75rem;
-        color: var(--text-muted);
-        margin-top: 2px;
-      }
-
-      /* ── RESULTS ── */
-      #results {
-        background: var(--off-white);
-        color: var(--black);
-      }
-      #results .section-eyebrow {
-        color: var(--orange);
-      }
-      #results h2 {
-        color: var(--black);
-      }
-      #results > p {
-        color: #666;
-        max-width: 500px;
-        margin-bottom: 3rem;
+      .res-header p {
+        color: var(--dim3);
+        font-size: 15px;
+        max-width: 340px;
+        line-height: 1.7;
       }
       .results-grid {
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        gap: 1.5rem;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1px;
+        background: var(--line);
       }
-      .result-card {
-        background: #fff;
-        border: 1px solid var(--border-light);
-        border-radius: 14px;
-        padding: 2rem;
-        transition:
-          transform 0.2s,
-          box-shadow 0.2s;
+      .res-card {
+        background: var(--ink);
+        padding: 40px 36px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        transition: background 0.2s;
       }
-      .result-card:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
+      .res-card:hover {
+        background: var(--ink3);
       }
-      .result-tags {
+      .res-tags {
         display: flex;
         flex-wrap: wrap;
-        gap: 0.4rem;
-        margin-bottom: 1rem;
+        gap: 6px;
       }
-      .tag {
+      .rtag {
         font-family: var(--mono);
-        font-size: 0.68rem;
-        text-transform: uppercase;
+        font-size: 10px;
         letter-spacing: 0.06em;
-        padding: 3px 8px;
+        text-transform: uppercase;
+        padding: 4px 10px;
         border-radius: 4px;
-        background: var(--orange-dim);
-        color: var(--orange);
-        border: 1px solid rgba(196, 91, 26, 0.2);
+        border: 1px solid var(--line2);
+        color: var(--dim2);
       }
-      .result-card h3 {
-        font-size: 1.05rem;
+      .res-title {
+        font-size: 22px;
         font-weight: 700;
-        color: var(--black);
-        margin-bottom: 0.5rem;
+        letter-spacing: -0.02em;
       }
-      .result-meta {
-        font-size: 0.8rem;
-        color: var(--orange);
+      .res-meta {
         font-family: var(--mono);
-        margin-bottom: 0.75rem;
+        font-size: 11px;
+        color: var(--o);
+        letter-spacing: 0.04em;
       }
-      .result-card p {
-        font-size: 0.875rem;
-        color: #555;
-        line-height: 1.65;
+      .res-body {
+        font-size: 14px;
+        color: var(--dim3);
+        line-height: 1.7;
+        flex: 1;
       }
-      .result-placeholder {
-        border: 2px dashed var(--border-light);
-        background: transparent;
+      .res-placeholder {
+        background: var(--ink);
         display: flex;
         flex-direction: column;
-        justify-content: center;
         align-items: center;
-        min-height: 200px;
-        color: #bbb;
-        font-size: 0.875rem;
-        text-align: center;
-        gap: 0.5rem;
+        justify-content: center;
+        padding: 80px 36px;
+        gap: 12px;
+        border: 1px dashed rgba(255, 255, 255, 0.1);
       }
-      .result-placeholder span {
+      .res-placeholder span {
         font-family: var(--mono);
-        font-size: 0.72rem;
+        font-size: 11px;
+        color: var(--dim);
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
       }
 
-      /* ── FAQ ── */
+      /* ─── FAQ ─── */
       #faq {
-        background: var(--black);
+        background: var(--ink2);
       }
-      #faq h2 {
-        margin-bottom: 2.5rem;
+      .faq-layout {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 100px;
+        align-items: start;
+      }
+      .faq-left h2 {
+        margin-bottom: 20px;
+      }
+      .faq-left p {
+        font-size: 15px;
+        color: var(--dim3);
+        line-height: 1.7;
       }
       .faq-list {
-        display: flex;
-        flex-direction: column;
-        /* max-width: 720px; */
+        border-top: 1px solid var(--line);
       }
-      .faq-item {
-        border-bottom: 1px solid var(--border);
+      .fi {
+        border-bottom: 1px solid var(--line);
       }
-      .faq-q {
+      .fi-q {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 1.4rem 0;
+        padding: 24px 0;
         cursor: pointer;
-        font-size: 1rem;
+        font-size: 16px;
         font-weight: 500;
-        color: var(--off-white);
+        gap: 24px;
+        transition: color 0.2s;
         user-select: none;
-        gap: 1rem;
       }
-      .faq-q:hover {
-        color: var(--orange-light);
+      .fi-q:hover {
+        color: var(--o);
       }
-      .faq-icon {
-        color: var(--orange);
-        font-size: 1.2rem;
-        transition: transform 0.3s;
+      .fi-icon {
+        font-size: 20px;
+        color: var(--o);
         flex-shrink: 0;
+        transition: transform 0.3s;
+        line-height: 1;
       }
-      .faq-item.open .faq-icon {
+      .fi.open .fi-icon {
         transform: rotate(45deg);
       }
-      .faq-a {
+      .fi-a {
         max-height: 0;
         overflow: hidden;
-        transition:
-          max-height 0.35s ease,
-          padding 0.3s;
+        transition: max-height 0.35s ease;
       }
-      .faq-item.open .faq-a {
-        max-height: 200px;
-        padding-bottom: 1.25rem;
+      .fi.open .fi-a {
+        max-height: 180px;
       }
-      .faq-a p {
-        font-size: 0.9rem;
-        color: var(--text-muted);
-        line-height: 1.7;
+      .fi-a p {
+        font-size: 14px;
+        color: var(--dim3);
+        line-height: 1.75;
+        padding-bottom: 24px;
       }
 
-      /* ── CLOSING CTA ── */
+      /* ─── CLOSING CTA ─── */
       #cta {
         background: var(--off-white);
-        color: var(--black);
+        padding: 160px 48px;
         text-align: center;
-        padding: 120px 5vw;
+        position: relative;
+        overflow: hidden;
+      }
+      .cta-glow {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 800px;
+        height: 400px;
+        background: radial-gradient(
+          ellipse,
+          rgba(196, 91, 26, 0.12) 0%,
+          transparent 70%
+        );
+        pointer-events: none;
+      }
+      #cta .eyebrow {
+        text-align: center;
       }
       #cta h2 {
-        color: var(--black);
-        max-width: 600px;
-        margin: 0 auto 1rem;
+        max-width: 700px;
+        margin: 0 auto 24px;
+        position: relative;
+        z-index: 1;
       }
       #cta p {
-        color: #666;
-        max-width: 420px;
-        margin: 0 auto 2rem;
+        color: var(--dim1);
+        font-size: 16px;
+        margin-bottom: 48px;
+        position: relative;
+        z-index: 1;
       }
-      .cta-actions {
+      .cta-wrap {
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 1rem;
+        gap: 20px;
+        position: relative;
+        z-index: 1;
       }
-      .secondary-link {
-        font-size: 0.85rem;
-        color: #888;
+      .cta-email {
+        font-family: var(--mono);
+        font-size: 13px;
+        color: var(--dim2);
       }
-      .secondary-link a {
-        color: var(--orange);
+      .cta-email a {
+        color: var(--o);
         text-decoration: none;
       }
-      .secondary-link a:hover {
+      .cta-email a:hover {
         text-decoration: underline;
       }
 
-      /* ── FOOTER ── */
+      /* ─── FOOTER ─── */
       footer {
-        background: var(--black);
-        border-top: 1px solid var(--border);
-        padding: 3rem 5vw;
+        background: var(--ink2);
+        border-top: 1px solid var(--line);
+        padding: 48px;
         display: grid;
         grid-template-columns: 1fr auto;
-        gap: 2rem;
+        gap: 32px;
         align-items: center;
       }
-      .footer-logo {
-        font-size: 1rem;
-        font-weight: 700;
-        color: var(--off-white);
-        margin-bottom: 0.35rem;
+      .fl {
+        font-family: var(--mono);
+        font-size: 12px;
       }
-      .footer-logo span {
-        color: var(--orange);
+      .fl-logo {
+        color: var(--cream);
+        font-size: 13px;
+        margin-bottom: 6px;
       }
-      .footer-tagline {
-        font-size: 0.8rem;
-        color: var(--text-muted);
-        margin-bottom: 1.25rem;
+      .fl-logo b {
+        color: var(--o);
       }
-      .footer-nav {
+      .fl-tag {
+        color: var(--dim);
+        margin-bottom: 20px;
+      }
+      .fl-nav {
         display: flex;
         flex-wrap: wrap;
-        gap: 1rem 2rem;
+        gap: 6px 24px;
       }
-      .footer-nav a {
-        font-size: 0.8rem;
-        color: var(--text-muted);
+      .fl-nav a {
+        font-size: 12px;
+        color: var(--dim2);
         text-decoration: none;
         transition: color 0.2s;
       }
-      .footer-nav a:hover {
-        color: var(--off-white);
+      .fl-nav a:hover {
+        color: var(--cream);
       }
-      .footer-right {
+      .fr {
         text-align: right;
       }
-      .footer-legal {
-        font-size: 0.78rem;
-        color: var(--text-muted);
-        line-height: 1.8;
-      }
-      .footer-socials {
+      .fr-soc {
         display: flex;
-        gap: 1rem;
+        gap: 20px;
         justify-content: flex-end;
-        margin-bottom: 1rem;
+        margin-bottom: 12px;
       }
-      .footer-socials a {
-        color: var(--text-muted);
+      .fr-soc a {
+        font-family: var(--mono);
+        font-size: 12px;
+        color: var(--dim2);
         text-decoration: none;
-        font-size: 0.8rem;
         transition: color 0.2s;
       }
-      .footer-socials a:hover {
-        color: var(--orange);
+      .fr-soc a:hover {
+        color: var(--o);
+      }
+      .fr-legal {
+        font-family: var(--mono);
+        font-size: 11px;
+        color: var(--dim);
+        line-height: 1.9;
       }
 
-      /* REVEAL */
-      .reveal {
+      /* ─── REVEAL ─── */
+      .rv {
         opacity: 0;
-        transform: translateY(24px);
-        transition: 0.6s ease;
+        transform: translateY(32px);
+        transition:
+          opacity 0.7s ease,
+          transform 0.7s ease;
       }
-
-      .reveal.visible {
+      .rv.in {
+        /* color: var(--ink); */
         opacity: 1;
-        transform: translateY(0);
+        transform: none;
+      }
+      .rv2 {
+        opacity: 0;
+        transform: translateY(20px);
+        transition:
+          opacity 0.7s ease 0.15s,
+          transform 0.7s ease 0.15s;
+      }
+      .rv2.in {
+        opacity: 1;
+        transform: none;
       }
 
-      /* ── MOBILE ── */
-      @media (max-width: 900px) {
-        .pain-cards,
-        .services-grid,
-        .packages-grid,
+      /* ─── MOBILE ─── */
+      @media (max-width: 960px) {
+        nav {
+          padding: 0 24px;
+        }
+        .nav-r a:not(.nav-cta) {
+          display: none;
+        }
+        .section,
+        .hero-section,
+        #hero,
+        #cta {
+          padding-left: 24px;
+          padding-right: 24px;
+        }
+        #hero {
+          padding: 100px 24px 60px;
+        }
+        .prob-layout,
+        .ai-layout,
+        .faq-layout,
+        .svc-header,
+        .res-header {
+          grid-template-columns: 1fr;
+          gap: 40px;
+        }
+        .pkg-grid,
         .results-grid {
           grid-template-columns: 1fr;
         }
-        .why-ai-grid {
-          grid-template-columns: 1fr;
-          gap: 3rem;
+        .ai-stat-grid {
+          grid-template-columns: 1fr 1fr;
         }
-        .hero-visual {
-          display: none;
+        .hero-bottom {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+        .hero-actions {
+          align-items: flex-start;
+        }
+        .diag {
+          grid-template-columns: 1fr;
         }
         footer {
           grid-template-columns: 1fr;
         }
-        .footer-right {
+        .fr {
           text-align: left;
         }
-        .footer-socials {
+        .fr-soc {
           justify-content: flex-start;
+        }
+        .big-num,
+        .prob-giant {
+          display: none;
         }
       }
       @media (max-width: 640px) {
@@ -1143,23 +1307,22 @@
           padding: 1.75rem;
         }
       }
-
-      /* ── SCROLL REVEAL ── */
-      .reveal {
-        opacity: 0;
-        transform: translateY(24px);
-        transition:
-          opacity 0.6s ease,
-          transform 0.6s ease;
-      }
-      .reveal.visible {
-        opacity: 1;
-        transform: none;
-      }
     </style>
   </head>
   <body>
     <!-- NAV -->
+    <!-- <nav>
+      <a href="#" class="logo">RISE<b>LAB</b> STUDIO</a>
+      <div class="nav-r">
+        <a href="#services">Services</a>
+        <a href="#results">Results</a>
+        <a href="#packages">Packages</a>
+        <a href="#why-ai">Why Riselab</a>
+        <a href="mailto:hello@riselabstudio.com" class="nav-cta"
+          >Let's Talk →</a
+        >
+      </div>
+    </nav> -->
     <nav>
       <a href="#" class="nav-logo">Rise<span>lab</span> Studio</a>
       <ul class="nav-links">
@@ -1180,503 +1343,601 @@
 
     <!-- HERO -->
     <section id="hero">
-      <div class="hero-grid-bg"></div>
-      <div class="hero-glow"></div>
+      <canvas id="bg"></canvas>
+      <div class="hero-noise"></div>
+      <div class="big-num">RISELAB</div>
       <div class="hero-content">
-        <div
-          style="
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            flex-wrap: wrap;
-            margin-bottom: 2rem;
-          "
-        >
-          <div class="availability-banner">
-            Currently onboarding new clients
-          </div>
-          <div class="status-pill">Open for growth partnerships this month</div>
+        <div class="hero-tag">
+          <span class="pulse-dot"></span>Open for growth partnerships — June
+          2026
         </div>
         <h1>
-          Growth that's <span class="accent">engineered</span>,<br />not
-          guessed.
+          <span class="line">Growth that's</span>
+          <span class="line orange">engineered,</span>
+          <span class="line">not guessed.</span>
         </h1>
-        <p class="subheadline">
-          Riselab is an AI-powered growth communications agency. We build your
-          lead pipeline, sharpen your message, and put your brand in front of
-          the people who are ready to buy.
-        </p>
-        <div class="hero-ctas">
-          <a href="mailto:hello@riselabstudio.com" class="btn-primary"
-            >Let's talk &nbsp;·&nbsp; No commitment</a
-          >
-          <a href="#services" class="btn-secondary">See what we build →</a>
+        <div class="hero-bottom">
+          <p class="hero-sub">
+            Riselab is an AI-powered growth communications agency. We build your
+            lead pipeline, sharpen your message, and put your brand in front of
+            the people who are ready to buy.
+          </p>
+          <div class="hero-actions">
+            <a href="mailto:hello@riselabstudio.com" class="btn-main"
+              >Let's talk &nbsp;·&nbsp; No commitment →</a
+            >
+            <a href="#services" class="btn-ghost">See what we build ↓</a>
+            <p class="trust">
+              Trusted by founders &amp; investment firms across
+              <span>Nigeria</span> and beyond
+            </p>
+          </div>
         </div>
-        <p class="trust-line">
-          Trusted by founders and investment firms across
-          <span>Nigeria</span> and beyond
-        </p>
       </div>
-
-      <div class="hero-visual">
-        <div class="lead-card">
-          <div class="lead-dot"></div>
-          Adaeze N. — CFO, Abuja
-          <div class="lead-tag">Qualified</div>
-        </div>
-        <div class="lead-card">
-          <div class="lead-dot"></div>
-          Emeka O. — Founder, Lagos
-          <div class="lead-tag">Warm</div>
-        </div>
-        <div class="lead-card">
-          <div class="lead-dot"></div>
-          Chidi F. — MD, Port Harcourt
-          <div class="lead-tag">Qualified</div>
-        </div>
-        <div class="lead-card">
-          <div class="lead-dot"></div>
-          Ifeoma A. — Partner, London
-          <div class="lead-tag">Warm</div>
-        </div>
+      <div class="scroll-line">
+        <span>Scroll</span>
+        <div class="scroll-bar"></div>
       </div>
     </section>
 
-    <!-- PROBLEM -->
-    <section id="problem">
-      <div class="section-eyebrow">The problem</div>
-      <h2 class="reveal">
-        Growth doesn't stall <em class="random">randomly.</em>
-      </h2>
-      <p class="problem-intro reveal">
-        It stalls because the wrong people are seeing your message, the right
-        people aren't being followed up, and your content sounds like everyone
-        else in your space.
-      </p>
-
-      <div class="pain-cards">
-        <div class="pain-card reveal">
-          <h3>Prospects go cold.</h3>
-          <p>
-            You're reaching out, but nothing converts. The leads aren't
-            qualified, the timing is off, and there's no follow-up system
-            holding it together.
-          </p>
-        </div>
-        <div class="pain-card reveal">
-          <h3>Your content blends in.</h3>
-          <p>
-            You post. You share. And nothing sticks. No hooks, no proof points,
-            no reason for your ideal client to stop scrolling and pay attention.
-          </p>
-        </div>
-        <div class="pain-card reveal">
-          <h3>No one knows what you do.</h3>
-          <p>
-            Your offer is real. Your results are real. But the way it's
-            communicated leaves prospects guessing — and guessing means losing.
-          </p>
-        </div>
-      </div>
-
-      <div class="diagnosis-block reveal">
-        <h3>What's costing you clients</h3>
-        <ul>
-          <li>Your offer isn't framed to convert — it's framed to explain.</li>
-          <li>Your content strategy is reactive, not built to compound.</li>
-          <li>Your outreach is volume without signal.</li>
-          <li>Your brand doesn't communicate authority in your niche.</li>
-        </ul>
-      </div>
-
-      <div class="problem-cta reveal">
-        <a href="mailto:hello@riselabstudio.com" class="btn-dark"
-          >Let us show you what's leaking →</a
+    <!-- TICKER -->
+    <div class="ticker-wrap">
+      <div class="ticker" id="ticker">
+        <span class="tick-item"><span class="dot"></span>Lead Generation</span>
+        <span class="tick-item"><span class="dot"></span>Email Outreach</span>
+        <span class="tick-item"
+          ><span class="dot"></span>Brand Positioning</span
         >
-        <!-- <span style="font-size: 0.85rem; color: #888">Book a free audit</span> -->
+        <span class="tick-item"><span class="dot"></span>Funnel Audit</span>
+        <span class="tick-item"><span class="dot"></span>Content Strategy</span>
+        <span class="tick-item"
+          ><span class="dot"></span>Growth Communications</span
+        >
+        <span class="tick-item"
+          ><span class="dot"></span>Apollo.io AI Filters</span
+        >
+        <span class="tick-item"
+          ><span class="dot"></span>Academic Research</span
+        >
+        <span class="tick-item"
+          ><span class="dot"></span>Pipeline Building</span
+        >
+        <span class="tick-item"><span class="dot"></span>Lead Generation</span>
+        <span class="tick-item"><span class="dot"></span>Email Outreach</span>
+        <span class="tick-item"
+          ><span class="dot"></span>Brand Positioning</span
+        >
+        <span class="tick-item"><span class="dot"></span>Funnel Audit</span>
+        <span class="tick-item"><span class="dot"></span>Content Strategy</span>
+        <span class="tick-item"
+          ><span class="dot"></span>Growth Communications</span
+        >
+        <span class="tick-item"
+          ><span class="dot"></span>Apollo.io AI Filters</span
+        >
+        <span class="tick-item"
+          ><span class="dot"></span>Academic Research</span
+        >
+        <span class="tick-item"
+          ><span class="dot"></span>Pipeline Building</span
+        >
       </div>
+    </div>
+
+    <!-- PROBLEM -->
+    <section id="problem" class="section">
+      <div class="prob-giant">?</div>
+      <div class="prob-layout">
+        <div class="prob-left">
+          <div class="eyebrow rv">The real problem</div>
+          <h2 class="rv">
+            Growth doesn't stall <em class="ital">randomly.</em>
+          </h2>
+          <p class="rv2">
+            It stalls because the wrong people are seeing your message, the
+            right people aren't being followed up, and your content sounds like
+            everyone else in your space.
+          </p>
+          <a href="mailto:hello@riselabstudio.com" class="prob-cta rv2"
+            >Book a free audit →</a
+          >
+        </div>
+        <div class="prob-right">
+          <div class="pain rv">
+            <div class="pain-num">01 / PIPELINE</div>
+            <h3>Prospects go cold.</h3>
+            <p>
+              You're reaching out, but nothing converts. Leads aren't qualified,
+              timing is off, and there's no follow-up system holding it
+              together.
+            </p>
+          </div>
+          <div class="pain rv">
+            <div class="pain-num">02 / CONTENT</div>
+            <h3>Your content blends in.</h3>
+            <p>
+              You post. You share. Nothing sticks. No hooks, no proof points, no
+              reason for your ideal client to stop scrolling.
+            </p>
+          </div>
+          <div class="pain rv">
+            <div class="pain-num">03 / CLARITY</div>
+            <h3>No one knows what you do.</h3>
+            <p>
+              Your offer is real. Your results are real. But the way it's
+              communicated leaves prospects guessing — and guessing means
+              losing.
+            </p>
+          </div>
+        </div>
+      </div>
+      <ul class="diag rv">
+        <div class="diag-head">What's costing you clients</div>
+        <li>Your offer isn't framed to convert — it's framed to explain.</li>
+        <li>Your content strategy is reactive, not built to compound.</li>
+        <li>Your outreach is volume without signal.</li>
+        <li>Your brand doesn't communicate authority in your niche.</li>
+      </ul>
     </section>
 
     <!-- SERVICES -->
-    <section id="services">
-      <div class="services-header">
-        <div class="section-eyebrow">What we build</div>
-        <h2 class="reveal">AI-powered growth,<br /><em>end to end.</em></h2>
-        <p class="reveal">
-          Three practices. One team. One objective: more qualified conversations
+    <section id="services" class="section">
+      <div class="svc-header">
+        <div>
+          <div class="eyebrow rv">What we build</div>
+          <h2 class="rv">AI-powered growth,<br /><em>end to end.</em></h2>
+        </div>
+        <p class="rv2">
+          Six capabilities. One team. One goal: more qualified conversations
           with the people you actually want to serve.
         </p>
       </div>
-
-      <div class="services-grid">
-        <div class="service-card reveal">
-          <div class="service-icon">◎</div>
-          <h3>Lead Generation & List Building</h3>
-          <p>
-            AI-assisted prospecting to identify and qualify decision-makers by
-            industry, role, location, and intent.
-          </p>
-          <a class="service-link" href="#">Explore Capability →</a>
+      <div class="svc-list">
+        <div
+          class="svc-row rv"
+          onclick="location.href = 'mailto:hello@riselabstudio.com'"
+        >
+          <div class="svc-n">01</div>
+          <div class="svc-info">
+            <h3>Lead Generation & List Building</h3>
+            <p>
+              AI-powered tools to find, filter, and qualify your ideal clients —
+              by industry, role, location, and intent.
+            </p>
+          </div>
+          <div class="svc-arrow">↗</div>
         </div>
-
-        <div class="service-card reveal">
-          <div class="service-icon">✉</div>
-          <h3>Email & Outreach Strategy</h3>
-          <p>
-            Sequences that sound human, move fast, and create meaningful
-            conversations with qualified prospects.
-          </p>
-          <a class="service-link" href="#">Explore Capability →</a>
+        <div
+          class="svc-row rv"
+          onclick="location.href = 'mailto:hello@riselabstudio.com'"
+        >
+          <div class="svc-n">02</div>
+          <div class="svc-info">
+            <h3>Email & Outreach Strategy</h3>
+            <p>
+              Sequences that sound human, move fast, and convert. Campaigns that
+              turn names into conversations.
+            </p>
+          </div>
+          <div class="svc-arrow">↗</div>
         </div>
-
-        <div class="service-card reveal">
-          <div class="service-icon">◻</div>
-          <h3>Content & Social Media</h3>
-          <p>
-            Founder-led and brand-led content designed for visibility,
-            authority, and trust across key platforms.
-          </p>
-          <a class="service-link" href="#">Explore Capability →</a>
+        <div
+          class="svc-row rv"
+          onclick="location.href = 'mailto:hello@riselabstudio.com'"
+        >
+          <div class="svc-n">03</div>
+          <div class="svc-info">
+            <h3>Content & Social Media</h3>
+            <p>
+              On-brand content across LinkedIn and Instagram — AI precision with
+              a human editorial eye.
+            </p>
+          </div>
+          <div class="svc-arrow">↗</div>
         </div>
-
-        <div class="service-card reveal">
-          <div class="service-icon">⌖</div>
-          <h3>Growth Communications</h3>
-          <p>
-            Messaging that works across pitch decks, onboarding flows, landing
-            pages, sales assets, and campaigns.
-          </p>
-          <a class="service-link" href="#">Explore Capability →</a>
+        <div
+          class="svc-row rv"
+          onclick="location.href = 'mailto:hello@riselabstudio.com'"
+        >
+          <div class="svc-n">04</div>
+          <div class="svc-info">
+            <h3>Growth Communications</h3>
+            <p>
+              Messaging at every funnel stage — pitch decks to onboarding
+              emails. The right words in the right place.
+            </p>
+          </div>
+          <div class="svc-arrow">↗</div>
         </div>
-
-        <div class="service-card reveal">
-          <div class="service-icon">⊕</div>
-          <h3>Funnel & Onboarding Audit</h3>
-          <p>
-            We diagnose where leads are dropping off and identify the friction
-            points costing you conversions.
-          </p>
-          <a class="service-link" href="#">Explore Capability →</a>
+        <div
+          class="svc-row rv"
+          onclick="location.href = 'mailto:hello@riselabstudio.com'"
+        >
+          <div class="svc-n">05</div>
+          <div class="svc-info">
+            <h3>Funnel & Onboarding Audit</h3>
+            <p>
+              KYC friction, unclear CTAs, slow follow-up — we find it, diagnose
+              it, and fix it.
+            </p>
+          </div>
+          <div class="svc-arrow">↗</div>
         </div>
-
-        <div class="service-card reveal">
-          <div class="service-icon">◈</div>
-          <h3>Brand Positioning & Strategy</h3>
-          <p>
-            We define your voice, refine your story, and make your market
-            position easier to understand and remember.
-          </p>
-          <a class="service-link" href="#">Explore Capability →</a>
+        <div
+          class="svc-row rv"
+          onclick="location.href = 'mailto:hello@riselabstudio.com'"
+        >
+          <div class="svc-n">06</div>
+          <div class="svc-info">
+            <h3>Brand Positioning & Strategy</h3>
+            <p>
+              We build your positioning, define your voice, and make every
+              touchpoint tell the same compelling story.
+            </p>
+          </div>
+          <div class="svc-arrow">↗</div>
         </div>
-
-        <div class="service-card specialized reveal">
-          <div class="specialized-badge">Specialized Service</div>
-          <h3>Academic Research Support</h3>
-          <p>
-            Rigorous academic and professional research support for postgraduate
-            students, researchers, and organizations.
-          </p>
-          <a class="service-link" href="#">Get Research Support →</a>
+        <div
+          class="svc-row rv"
+          onclick="location.href = 'mailto:hello@riselabstudio.com'"
+        >
+          <div class="svc-n">07</div>
+          <div class="svc-info">
+            <h3>Academic Research Support</h3>
+            <p>
+              Postgraduate assignments to literature reviews. AI-assisted
+              research, human-refined writing.
+            </p>
+          </div>
+          <div class="svc-arrow">↗</div>
         </div>
       </div>
     </section>
 
     <!-- PACKAGES -->
-    <section id="packages">
-      <div class="section-eyebrow">Choose your engagement</div>
-      <h2 class="reveal">Riselab meets you<br /><em>where you are.</em></h2>
-      <div class="packages-grid">
-        <div class="package-card reveal">
-          <div class="package-label">Riselab Build</div>
-          <h3>For founders launching from scratch</h3>
-          <p class="pkg-sub">
-            Everything you need to look like you've been here for years — built
-            fast.
-          </p>
+    <section id="packages" class="section">
+      <div class="pkg-header">
+        <div class="eyebrow rv">Choose your engagement</div>
+        <h2 class="rv">Riselab meets you<br /><em>where you are.</em></h2>
+      </div>
+      <div class="pkg-grid">
+        <div class="pkg rv">
+          <div style="display: flex; flex-direction: column; gap: 8px">
+            <div class="hot-badge">Riselab Build</div>
+            <div class="pkg-name">Launch</div>
+            <div class="pkg-for">
+              For founders starting from scratch — everything you need to look
+              like you've been here for years, built fast.
+            </div>
+          </div>
           <hr class="pkg-divider" />
           <ul class="pkg-items">
-            <li>Lead list build (Apollo.io, AI-filtered)</li>
-            <li>LinkedIn & Instagram content — 1 month</li>
-            <li>Email outreach sequence (3-touch)</li>
-            <li>Brand positioning & messaging document</li>
+            <li>
+              <span class="chk">→</span>Lead list build (Apollo.io, AI-filtered)
+            </li>
+            <li>
+              <span class="chk">→</span>LinkedIn & Instagram content — 1 month
+            </li>
+            <li><span class="chk">→</span>Email outreach sequence (3-touch)</li>
+            <li>
+              <span class="chk">→</span>Brand positioning & messaging document
+            </li>
           </ul>
-          <p style="font-size: 0.78rem; color: #888">
-            Best for: Early-stage founders, new agencies, pre-launch businesses.
-          </p>
-          <a
-            href="mailto:hello@riselabstudio.com"
-            class="pkg-cta pkg-cta-outline"
-            >Start with Build</a
+          <div
+            style="font-size: 12px; color: var(--dim); font-family: var(--mono)"
+          >
+            Best for: Early-stage founders · New agencies · Pre-launch
+          </div>
+          <a href="mailto:hello@riselabstudio.com" class="pkg-btn pkg-btn-out"
+            >Start with Build →</a
           >
         </div>
-        <div class="package-card featured reveal">
-          <div class="package-label">Riselab Grow</div>
-          <h3>For businesses ready to scale</h3>
-          <p class="pkg-sub">
-            Install the systems that make results predictable month over month.
-          </p>
-          <hr
-            class="pkg-divider"
-            style="border-color: rgba(255, 255, 255, 0.1)"
-          />
-          <ul class="pkg-items">
-            <li>Monthly lead generation (curated, qualified lists)</li>
-            <li>Content strategy — LinkedIn, Instagram, newsletter</li>
-            <li>Funnel & onboarding audit</li>
-            <li>Monthly growth communications review</li>
-            <li>Priority support & strategy calls</li>
-          </ul>
-          <p style="font-size: 0.78rem; color: #666">
-            Best for: Growing agencies, SMEs, investment firms, financial
-            service providers.
-          </p>
-          <a href="mailto:hello@riselabstudio.com" class="pkg-cta"
-            >Start with Grow</a
-          >
-        </div>
-        <div class="package-card reveal">
-          <div class="package-label">À la carte</div>
-          <h3>For specific problems that need solving now</h3>
-          <p class="pkg-sub">One thing fixed. No full package required.</p>
+        <div class="pkg hot rv">
+          <div style="display: flex; flex-direction: column; gap: 8px">
+            <div
+              class="hot-badge"
+              style="background: rgba(196, 91, 26, 0.2); border-color: var(--o)"
+            >
+              ✦ Riselab Grow — Most Popular
+            </div>
+            <div class="pkg-name">Scale</div>
+            <div class="pkg-for">
+              For businesses with traction — install the systems that make
+              results predictable month over month.
+            </div>
+          </div>
           <hr class="pkg-divider" />
           <ul class="pkg-items">
-            <li>Lead list build — custom qualified prospects</li>
-            <li>Outreach email sequence — cold to warm</li>
-            <li>Content calendar — 30 days of posts</li>
-            <li>Funnel audit & recommendations</li>
-            <li>Brand messaging document</li>
-            <li>Social media management — monthly</li>
+            <li>
+              <span class="chk">→</span>Monthly lead generation (curated,
+              qualified)
+            </li>
+            <li>
+              <span class="chk">→</span>Content strategy — LinkedIn, Instagram,
+              newsletter
+            </li>
+            <li><span class="chk">→</span>Funnel & onboarding audit</li>
+            <li>
+              <span class="chk">→</span>Monthly growth communications review
+            </li>
+            <li><span class="chk">→</span>Priority support & strategy calls</li>
           </ul>
-          <a
-            href="mailto:hello@riselabstudio.com"
-            class="pkg-cta pkg-cta-outline"
-            >Pick a service</a
+          <div
+            style="font-size: 12px; color: var(--dim); font-family: var(--mono)"
+          >
+            Best for: Agencies · SMEs · Investment firms · Financial services
+          </div>
+          <a href="mailto:hello@riselabstudio.com" class="pkg-btn pkg-btn-solid"
+            >Start with Grow →</a
+          >
+        </div>
+        <div class="pkg rv">
+          <div style="display: flex; flex-direction: column; gap: 8px">
+            <div class="hot-badge">À la Carte</div>
+            <div class="pkg-name">Fix One Thing</div>
+            <div class="pkg-for">
+              You don't need the full package. You need one specific problem
+              solved — fast and precisely.
+            </div>
+          </div>
+          <hr class="pkg-divider" />
+          <ul class="pkg-items">
+            <li>
+              <span class="chk">→</span>Lead list build — custom qualified
+              prospects
+            </li>
+            <li><span class="chk">→</span>Outreach email sequence</li>
+            <li>
+              <span class="chk">→</span>Content calendar — 30 days of posts
+            </li>
+            <li><span class="chk">→</span>Funnel audit & recommendations</li>
+            <li><span class="chk">→</span>Brand messaging document</li>
+            <li><span class="chk">→</span>Social media management — monthly</li>
+          </ul>
+          <div
+            style="font-size: 12px; color: var(--dim); font-family: var(--mono)"
+          >
+            Pay per deliverable. No retainer required.
+          </div>
+          <a href="mailto:hello@riselabstudio.com" class="pkg-btn pkg-btn-out"
+            >Pick a service →</a
           >
         </div>
       </div>
     </section>
 
     <!-- WHY AI -->
-    <section id="why-ai">
-      <div class="why-ai-grid">
+    <section id="why-ai" class="section">
+      <div class="ai-layout">
         <div>
-          <div class="section-eyebrow">The Riselab edge</div>
-          <h2 class="reveal">We don't guess.<br /><em>We compute.</em></h2>
-          <p class="why-ai-desc reveal">
+          <div class="eyebrow rv">The Riselab edge</div>
+          <h2 class="rv">We don't guess.<br /><em>We compute.</em></h2>
+          <p class="ai-desc rv">
             Most agencies rely on instinct and templates. Riselab runs on AI —
-            faster research, sharper targeting, more precise messaging, and
-            results you can trace back to decisions we made together.
+            which means faster research, sharper targeting, more precise
+            messaging, and results you can trace back to decisions we made
+            together.
           </p>
-          <div class="ai-points">
-            <div class="ai-point reveal">
-              <div class="ai-point-icon">◈</div>
-              <div class="ai-point-text">
-                <h4>Apollo.io AI filters — not recycled spreadsheets</h4>
-                <p>
-                  Lead lists built from live intent data and role-specific
-                  criteria.
-                </p>
+          <blockquote class="ai-quote rv">
+            "AI is the engine. Strategy is the steering wheel. Your growth is
+            the destination."
+          </blockquote>
+          <div class="ai-stat-grid rv">
+            <div class="ai-stat">
+              <div class="ai-stat-n"><span id="c1">0</span>×</div>
+              <div class="ai-stat-l">
+                Faster lead research vs. manual methods
               </div>
             </div>
-            <div class="ai-point reveal">
-              <div class="ai-point-icon">✎</div>
-              <div class="ai-point-text">
-                <h4>AI drafting + human editorial review</h4>
-                <p>
-                  Content sounds like you, not like a prompt. Every word
-                  reviewed by a real strategist.
-                </p>
+            <div class="ai-stat">
+              <div class="ai-stat-n"><span id="c2">0</span>h</div>
+              <div class="ai-stat-l">From brief to first deliverable</div>
+            </div>
+            <div class="ai-stat">
+              <div class="ai-stat-n"><span id="c3">0</span>%</div>
+              <div class="ai-stat-l">
+                Average increase in outreach reply rates
               </div>
             </div>
-            <div class="ai-point reveal">
-              <div class="ai-point-icon">⊕</div>
-              <div class="ai-point-text">
-                <h4>Outreach personalised at scale</h4>
-                <p>
-                  100 emails that read like 100 individual notes — because they
-                  are.
-                </p>
+            <div class="ai-stat">
+              <div class="ai-stat-n"><span id="c4">0</span>+</div>
+              <div class="ai-stat-l">
+                Apollo.io AI filter criteria applied per list
               </div>
             </div>
           </div>
         </div>
-        <div class="ai-visual reveal">
-          <div class="ai-visual-label">Pipeline health — live snapshot</div>
-          <div class="ai-bar-row">
-            <div class="ai-bar-label">
-              <span>Lead qualification rate</span
-              ><span style="color: var(--orange)">78%</span>
+        <div class="ai-points-right">
+          <div class="ai-pt rv">
+            <div class="ai-pt-icon">
+              <svg viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="3" />
+                <path
+                  d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"
+                />
+              </svg>
             </div>
-            <div class="ai-bar-track">
-              <div class="ai-bar-fill" style="width: 78%"></div>
-            </div>
-          </div>
-          <div class="ai-bar-row">
-            <div class="ai-bar-label">
-              <span>Email open rate</span
-              ><span style="color: var(--orange)">62%</span>
-            </div>
-            <div class="ai-bar-track">
-              <div class="ai-bar-fill" style="width: 62%"></div>
+            <div>
+              <h4>Apollo.io AI filters — not recycled spreadsheets</h4>
+              <p>
+                Lead lists built from live intent data and role-specific
+                criteria. Every prospect pre-qualified before it reaches you.
+              </p>
             </div>
           </div>
-          <div class="ai-bar-row">
-            <div class="ai-bar-label">
-              <span>Outreach reply rate</span
-              ><span style="color: var(--orange)">41%</span>
+          <div class="ai-pt rv">
+            <div class="ai-pt-icon">
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"
+                />
+              </svg>
             </div>
-            <div class="ai-bar-track">
-              <div class="ai-bar-fill" style="width: 41%"></div>
-            </div>
-          </div>
-          <div class="ai-bar-row">
-            <div class="ai-bar-label">
-              <span>Funnel conversion</span
-              ><span style="color: var(--orange)">29%</span>
-            </div>
-            <div class="ai-bar-track">
-              <div class="ai-bar-fill" style="width: 29%"></div>
+            <div>
+              <h4>AI drafting + human editorial review</h4>
+              <p>
+                Content sounds like you, not like a prompt. Every word reviewed
+                and refined by a real strategist before it goes live.
+              </p>
             </div>
           </div>
-          <div class="ai-stat-row">
-            <div class="ai-stat">
-              <div class="ai-stat-num">3×</div>
-              <div class="ai-stat-desc">faster lead research vs manual</div>
+          <div class="ai-pt rv">
+            <div class="ai-pt-icon">
+              <svg viewBox="0 0 24 24">
+                <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+              </svg>
             </div>
-            <div class="ai-stat">
-              <div class="ai-stat-num">48h</div>
-              <div class="ai-stat-desc">from brief to first deliverable</div>
+            <div>
+              <h4>Outreach personalised at scale</h4>
+              <p>
+                100 emails that each read like an individual note — because the
+                AI does the research, the human makes the call.
+              </p>
             </div>
           </div>
-          <p
-            style="
-              font-size: 0.75rem;
-              color: var(--text-muted);
-              font-family: var(--mono);
-              margin-top: 0.5rem;
-            "
-          >
-            AI is the engine. Strategy is the steering wheel.
-          </p>
+          <div class="ai-pt rv">
+            <div class="ai-pt-icon">
+              <svg viewBox="0 0 24 24">
+                <circle cx="11" cy="11" r="8" />
+                <path d="m21 21-4.35-4.35" />
+              </svg>
+            </div>
+            <div>
+              <h4>Funnel diagnostics powered by data</h4>
+              <p>
+                Pattern analysis replaces guesswork. We find where leads drop
+                off and fix it with precision, not instinct.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
     <!-- RESULTS -->
-    <section id="results">
-      <div class="section-eyebrow">Recent work</div>
-      <h2 class="reveal">What we've built<br /><em>for clients.</em></h2>
-      <p
-        class="reveal"
-        style="color: #666; max-width: 500px; margin-bottom: 3rem"
-      >
-        A sample of active engagements. The full roster is growing.
-      </p>
+    <section id="results" class="section">
+      <div class="res-header">
+        <div>
+          <div class="eyebrow rv">Recent work</div>
+          <h2 class="rv">What we've built<br /><em>for clients.</em></h2>
+        </div>
+        <p class="rv">
+          A sample of active engagements. The full roster is growing.
+        </p>
+      </div>
       <div class="results-grid">
-        <div class="result-card reveal">
-          <div class="result-tags">
-            <span class="tag">Lead Generation</span>
-            <span class="tag">Funnel Audit</span>
-            <span class="tag">Financial Services</span>
+        <div class="res-card rv">
+          <div class="res-tags">
+            <span class="rtag">Lead Generation</span>
+            <span class="rtag">Funnel Audit</span>
+            <span class="rtag">Financial Services</span>
           </div>
-          <h3>Suba Capital</h3>
-          <div class="result-meta">
+          <div class="res-title">Suba Capital</div>
+          <div class="res-meta">
             Investment Firm · South South Nigeria + West Yorkshire, UK
           </div>
-          <p>
+          <p class="res-body">
             Identified KYC drop-off as the primary conversion leak. Built a
             qualified lead list of high-net-worth individuals and financial
-            decision-makers across two regions. Delivered email list audit and
-            onboarding funnel recommendations in Month 1.
+            decision-makers across two regions using Apollo.io and AI-filtered
+            criteria. Delivered email list audit and onboarding funnel
+            recommendations in Month 1.
           </p>
         </div>
-        <div class="result-card result-placeholder reveal">
-          <div style="font-size: 1.5rem; opacity: 0.3">◻</div>
-          <span>Client engagement</span>
-          <span style="color: #ccc">Coming soon</span>
+        <div class="res-placeholder rv">
+          <span>Engagement</span>
+          <span style="color: var(--dim2); font-size: 14px">Coming soon</span>
         </div>
-        <div class="result-card result-placeholder reveal">
-          <div style="font-size: 1.5rem; opacity: 0.3">◻</div>
-          <span>Client engagement</span>
-          <span style="color: #ccc">Coming soon</span>
+        <div class="res-placeholder rv">
+          <span>Engagement</span>
+          <span style="color: var(--dim2); font-size: 14px">Coming soon</span>
         </div>
       </div>
     </section>
 
     <!-- FAQ -->
-    <section id="faq">
-      <div class="section-eyebrow">Questions, answered</div>
-      <h2 class="reveal">You probably<br /><em>want to know…</em></h2>
-      <div class="faq-list">
-        <div class="faq-item">
-          <div class="faq-q">
-            How fast do you start? <span class="faq-icon">+</span>
-          </div>
-          <div class="faq-a">
-            <p>
-              Usually within the week. After an initial call, we scope the
-              project and move. No long onboarding cycles.
-            </p>
-          </div>
+    <section id="faq" class="section">
+      <div class="faq-layout">
+        <div class="faq-left">
+          <div class="eyebrow rv">Questions</div>
+          <h2 class="rv">You probably want to know…</h2>
+          <p class="rv" style="margin-top: 16px">
+            Everything on the table. No evasive answers.
+          </p>
         </div>
-        <div class="faq-item">
-          <div class="faq-q">
-            What does it cost? <span class="faq-icon">+</span>
+        <div class="faq-list">
+          <div class="fi">
+            <div class="fi-q">
+              How fast do you start? <span class="fi-icon">+</span>
+            </div>
+            <div class="fi-a">
+              <p>
+                Usually within the week. After an initial call, we scope the
+                project and move. No long onboarding cycles — we're designed for
+                speed.
+              </p>
+            </div>
           </div>
-          <div class="faq-a">
-            <p>
-              No fixed price on the site. Every engagement is scoped to your
-              goals. Reach out and we'll send a clear proposal within 48 hours.
-            </p>
+          <div class="fi">
+            <div class="fi-q">
+              What does it cost? <span class="fi-icon">+</span>
+            </div>
+            <div class="fi-a">
+              <p>
+                No fixed price on the site. Every engagement is scoped to your
+                goals. Reach out and we'll send a clear proposal within 48
+                hours.
+              </p>
+            </div>
           </div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q">
-            Do you really use AI? <span class="faq-icon">+</span>
+          <div class="fi">
+            <div class="fi-q">
+              Do you really use AI? <span class="fi-icon">+</span>
+            </div>
+            <div class="fi-a">
+              <p>
+                Yes — meaningfully. AI powers our research, prospecting, and
+                drafting. Every output is reviewed and refined by a real
+                strategist before it reaches you.
+              </p>
+            </div>
           </div>
-          <div class="faq-a">
-            <p>
-              Yes — meaningfully. AI powers our research, prospecting, and
-              drafting. Every output is reviewed and refined by a real
-              strategist before it reaches you.
-            </p>
+          <div class="fi">
+            <div class="fi-q">
+              Can you work with what I already have?
+              <span class="fi-icon">+</span>
+            </div>
+            <div class="fi-a">
+              <p>
+                Absolutely. Existing lists, platforms, content, funnels — we
+                audit, refine, and build on what's working. Nothing starts from
+                zero unnecessarily.
+              </p>
+            </div>
           </div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q">
-            Can you work with what I already have?
-            <span class="faq-icon">+</span>
+          <div class="fi">
+            <div class="fi-q">
+              Do you offer ongoing support? <span class="fi-icon">+</span>
+            </div>
+            <div class="fi-a">
+              <p>
+                Yes. Monthly retainer options are available under Riselab Grow,
+                with strategy check-ins and priority access to the team.
+              </p>
+            </div>
           </div>
-          <div class="faq-a">
-            <p>
-              Absolutely. Existing lists, platforms, content, funnels — we
-              audit, refine, and build on what's working. Nothing starts from
-              zero unnecessarily.
-            </p>
-          </div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q">
-            Do you offer ongoing support? <span class="faq-icon">+</span>
-          </div>
-          <div class="faq-a">
-            <p>
-              Yes. Monthly retainer options are available under the Riselab Grow
-              package, with strategy check-ins and priority access.
-            </p>
-          </div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q">
-            What kinds of businesses do you work with?
-            <span class="faq-icon">+</span>
-          </div>
-          <div class="faq-a">
-            <p>
-              Founders, investment firms, SMEs, and agencies — particularly in
-              financial services, tech, and professional services across Nigeria
-              and globally.
-            </p>
+          <div class="fi">
+            <div class="fi-q">
+              What kinds of businesses do you work with?
+              <span class="fi-icon">+</span>
+            </div>
+            <div class="fi-a">
+              <p>
+                Founders, investment firms, SMEs, and agencies — particularly in
+                financial services, tech, and professional services across
+                Nigeria and globally.
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -1684,26 +1945,22 @@
 
     <!-- CLOSING CTA -->
     <section id="cta">
-      <div
-        class="section-eyebrow"
-        style="text-align: center; color: var(--orange)"
-      >
-        Ready?
-      </div>
-      <h2 class="reveal">Ready to grow<br /><em>with intention?</em></h2>
-      <p class="reveal">
+      <div class="cta-glow"></div>
+      <div class="eyebrow rv">Ready?</div>
+      <h2 class="rv black">Ready to grow<br /><em>with intention?</em></h2>
+      <p class="rv">
         Send us a message. We'll get back within 24 hours with a clear next
         step.
       </p>
-      <div class="cta-actions reveal">
+      <div class="cta-wrap rv">
         <a
           href="mailto:hello@riselabstudio.com"
-          class="btn-primary"
-          style="font-size: 1rem; padding: 1rem 2.25rem"
-          >→ Let's talk</a
+          class="btn-main"
+          style="font-size: 16px; padding: 18px 40px"
+          >Let's talk →</a
         >
-        <p class="secondary-link">
-          Or email us directly:
+        <p class="cta-email">
+          Or reach us directly at
           <a href="mailto:hello@riselabstudio.com">hello@riselabstudio.com</a>
         </p>
       </div>
@@ -1712,29 +1969,30 @@
     <!-- FOOTER -->
     <footer>
       <div>
-        <div class="footer-logo">Rise<span>lab</span> Studio</div>
-        <div class="footer-tagline">AI-powered growth. Built for ambition.</div>
-        <!-- <nav class="footer-nav">
+        <div class="fl">
+          <div class="fl-logo">RISE<b>LAB</b> STUDIO</div>
+          <div class="fl-tag">AI-powered growth. Built for ambition.</div>
+        </div>
+        <!-- <nav class="fl-nav">
           <a href="#services">Services</a>
           <a href="#results">Results</a>
-          <a href="#packages">How It Works</a>
+          <a href="#packages">Packages</a>
           <a href="#why-ai">Why Riselab</a>
           <a href="mailto:hello@riselabstudio.com">Contact</a>
         </nav> -->
       </div>
-      <div class="footer-right">
-        <div class="footer-socials">
+      <div class="fr">
+        <div class="fr-soc">
           <a href="#">LinkedIn</a>
           <a href="#">Instagram</a>
           <a href="mailto:hello@riselabstudio.com">Email</a>
         </div>
-        <div class="footer-legal">
+        <div class="fr-legal">
           © 2026 Riselab Studio. All rights reserved.<br />
           Abuja, Nigeria · hello@riselabstudio.com
         </div>
       </div>
     </footer>
-
     <script>
       const hamburger = document.querySelector(".hamburger");
       const navLinks = document.querySelector(".nav-links");
@@ -1752,33 +2010,121 @@
       });
     </script>
     <script>
-      // FAQ accordion
-      document.querySelectorAll(".faq-q").forEach((q) => {
+      // ── PARTICLE CANVAS BG ──
+      const canvas = document.getElementById("bg");
+      const ctx = canvas.getContext("2d");
+      let W,
+        H,
+        pts = [];
+      function resize() {
+        W = canvas.width = canvas.offsetWidth;
+        H = canvas.height = canvas.offsetHeight;
+      }
+      function initPts() {
+        pts = [];
+        const n = Math.floor((W * H) / 18000);
+        for (let i = 0; i < n; i++) {
+          pts.push({
+            x: Math.random() * W,
+            y: Math.random() * H,
+            vx: (Math.random() - 0.5) * 0.25,
+            vy: (Math.random() - 0.5) * 0.25,
+            r: Math.random() * 1.5 + 0.5,
+            o: Math.random() * 0.5 + 0.2,
+          });
+        }
+      }
+      function draw() {
+        ctx.clearRect(0, 0, W, H);
+        pts.forEach((p) => {
+          p.x += p.vx;
+          p.y += p.vy;
+          if (p.x < 0) p.x = W;
+          if (p.x > W) p.x = 0;
+          if (p.y < 0) p.y = H;
+          if (p.y > H) p.y = 0;
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(196,91,26,${p.o * 0.6})`;
+          ctx.fill();
+        });
+        pts.forEach((a, i) => {
+          for (let j = i + 1; j < pts.length; j++) {
+            const b = pts[j];
+            const dx = a.x - b.x,
+              dy = a.y - b.y;
+            const d = Math.sqrt(dx * dx + dy * dy);
+            if (d < 110) {
+              ctx.beginPath();
+              ctx.moveTo(a.x, a.y);
+              ctx.lineTo(b.x, b.y);
+              ctx.strokeStyle = `rgba(196,91,26,${(1 - d / 110) * 0.12})`;
+              ctx.lineWidth = 0.5;
+              ctx.stroke();
+            }
+          }
+        });
+        requestAnimationFrame(draw);
+      }
+      resize();
+      initPts();
+      draw();
+      window.addEventListener("resize", () => {
+        resize();
+        initPts();
+      });
+
+      // ── FAQ ACCORDION ──
+      document.querySelectorAll(".fi-q").forEach((q) => {
         q.addEventListener("click", () => {
-          const item = q.parentElement;
-          const isOpen = item.classList.contains("open");
+          const fi = q.parentElement;
+          const open = fi.classList.contains("open");
           document
-            .querySelectorAll(".faq-item")
-            .forEach((i) => i.classList.remove("open"));
-          if (!isOpen) item.classList.add("open");
+            .querySelectorAll(".fi")
+            .forEach((f) => f.classList.remove("open"));
+          if (!open) fi.classList.add("open");
         });
       });
 
-      // Scroll reveal
-      const observer = new IntersectionObserver(
+      // ── SCROLL REVEAL ──
+      const ro = new IntersectionObserver(
         (entries) => {
           entries.forEach((e) => {
             if (e.isIntersecting) {
-              e.target.classList.add("visible");
-              observer.unobserve(e.target);
+              e.target.classList.add("in");
+              ro.unobserve(e.target);
             }
           });
         },
-        { threshold: 0.1 },
+        { threshold: 0.08 },
       );
-      document
-        .querySelectorAll(".reveal")
-        .forEach((el) => observer.observe(el));
+      document.querySelectorAll(".rv,.rv2").forEach((el) => ro.observe(el));
+
+      // ── COUNTER ANIMATION ──
+      function countTo(el, target, suffix) {
+        let start = 0;
+        const step = target / 40;
+        const interval = setInterval(() => {
+          start = Math.min(start + step, target);
+          el.textContent = Math.round(start);
+          if (start >= target) clearInterval(interval);
+        }, 30);
+      }
+      const statObs = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              countTo(document.getElementById("c1"), 3, "×");
+              countTo(document.getElementById("c2"), 48, "h");
+              countTo(document.getElementById("c3"), 40, "%");
+              countTo(document.getElementById("c4"), 12, "+");
+              statObs.disconnect();
+            }
+          });
+        },
+        { threshold: 0.3 },
+      );
+      statObs.observe(document.querySelector(".ai-stat-grid"));
     </script>
   </body>
 </html>
